@@ -12,8 +12,8 @@ For More Items which are based on xamarin >> <a href="https://codecanyon.net/use
  <li> Follow me on  <a href="https://www.facebook.com/Elindoughous">Facebook</a> & <a href="https://www.linkedin.com/in/elin-doughouz-1b7458131/">Linkedin</a></li>
 </ul>
 
-[![Alt text for your video](https://img.youtube.com/vi/T-D1KVIuvjA/0.jpg)](http://www.youtube.com/watch?v=T-D1KVIuvjA)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xidW7z8e3-E" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![Alt text for your video](https://s22.postimg.cc/bbh2ubeyp/image.jpg)](https://www.youtube.com/watch?v=xidW7z8e3-E&list=PLeQXlFt1JeSZN0yWOY6AAE5HTT1SCBVyy)
+
 
 This license is protected under the GNU General Public License
