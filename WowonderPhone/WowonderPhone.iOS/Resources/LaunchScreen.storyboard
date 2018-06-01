@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="X5k-f2-b5h">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="gAE-YM-kbH">
+            <objects>
+                <viewController id="X5k-f2-b5h" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y8P-hJ-Z43"/>
+                        <viewControllerLayoutGuide type="bottom" id="9ZL-r4-8FZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yd7-JS-zBw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
+                                <rect key="frame" x="256" y="234" width="81" height="81"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading...." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="49" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" adjustsFontSizeToFit="NO">
+                                <rect key="frame" x="239" y="394" width="145" height="36"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxX="YES" flexibleMinX="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0.92549019607843142" green="0.96862745098039216" blue="1" alpha="1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="53" fixedFrame="YES">
+                                <rect key="frame" x="284" y="1038" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" customColorSpace="sRGB" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="23" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY" priority="1" id="39"/>
+                            <constraint firstItem="23" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX" priority="1" id="41"/>
+                        </constraints>
+                        <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XAI-xm-WK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="349" y="339"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Icon-60.png" width="52" height="50"/>
+        <image name="Default-568h.png" width="540" height="960"/>
+        <image name="Default-Portrait.png" width="1080" height="1920"/>
+        <image name="Default.png" width="1080" height="1920"/>
+        <image name="Icon-76.png" width="104" height="100"/>
+        <image name="Icon-Small-40.png" width="104" height="100"/>
+        <image name="Icon-Small.png" width="104" height="100"/>
+        <image name="a621108b69b169f0509e0664187768a9.gif" width="400" height="300"/>
+        <image name="About.png" width="30" height="30"/>
+        <image name="Attach.png" width="50" height="50"/>
+        <image name="Camera.png" width="18" height="18"/>
+        <image name="Checkmark.png" width="18" height="18"/>
+        <image name="Contacts.png" width="18" height="18"/>
+        <image name="Date.png" width="30" height="30"/>
+        <image name="DownloadB.png" width="18" height="18"/>
+        <image name="DownloadingB.png" width="70" height="70"/>
+        <image name="DownloadingG.png" width="18" height="18"/>
+        <image name="DownloadW.png" width="18" height="18"/>
+        <image name="DownW.png" width="55" height="55"/>
+        <image name="Facebook.png" width="18" height="18"/>
+        <image name="Fillter.png" width="18" height="18"/>
+        <image name="Forward.png" width="32" height="32"/>
+        <image name="Gender.png" width="35" height="35"/>
+        <image name="Google.png" width="18" height="18"/>
+        <image name="Help.png" width="30" height="30"/>
+        <image name="icon.png" width="104" height="100"/>
+        <image name="Instagram.png" width="18" height="18"/>
+        <image name="loading.png" width="117" height="106"/>
+        <image name="loadingspinner.jpg" width="192" height="186"/>
+        <image name="LoginbBackroundImage.jpg" width="1440" height="2560"/>
+        <image name="LoginbBackroundImage1.jpg" width="576" height="1024"/>
+        <image name="Logout.png" width="52" height="52"/>
+        <image name="Microphone.png" width="18" height="18"/>
+        <image name="Notifification.png" width="30" height="30"/>
+        <image name="Paper.png" width="18" height="18"/>
+        <image name="PauseB.png" width="18" height="18"/>
+        <image name="PauseW.png" width="18" height="18"/>
+        <image name="Place.png" width="30" height="30"/>
+        <image name="PlayB.png" width="18" height="18"/>
+        <image name="PlayW.png" width="18" height="18"/>
+        <image name="Plus.png" width="18" height="18"/>
+        <image name="Privacy.png" width="30" height="30"/>
+        <image name="Profile.png" width="30" height="30"/>
+        <image name="RecourdImage.png" width="170" height="170"/>
+        <image name="Refresh.png" width="18" height="18"/>
+        <image name="sa.jpg" width="794" height="598"/>
+        <image name="School.png" width="30" height="30"/>
+        <image name="Search.png" width="18" height="18"/>
+        <image name="SearchGrey.png" width="100" height="100"/>
+        <image name="Settings.png" width="30" height="30"/>
+        <image name="SettingsWhite.png" width="30" height="30"/>
+        <image name="splashscreen.png" width="1080" height="1920"/>
+        <image name="ss.png" width="480" height="800"/>
+        <image name="stop.png" width="300" height="300"/>
+        <image name="Twitter.png" width="18" height="18"/>
+        <image name="UploadAvater.png" width="1140" height="760"/>
+        <image name="UploadW.png" width="18" height="18"/>
+        <image name="User.png" width="18" height="18"/>
+        <image name="UserMale.png" width="35" height="35"/>
+        <image name="UserProfile.png" width="30" height="30"/>
+        <image name="Video.png" width="18" height="18"/>
+        <image name="VideoBlack.png" width="18" height="18"/>
+        <image name="Visible.png" width="35" height="35"/>
+        <image name="Vk.png" width="18" height="18"/>
+        <image name="wallpaperCity.jpg" width="1440" height="2560"/>
+        <image name="Website.png" width="30" height="30"/>
+        <image name="Cover.png" width="17" height="17"/>
+        <image name="default_profile_6_400x400.png" width="400" height="400"/>
+        <image name="logo.png" width="468" height="75"/>
+        <image name="Avatar.png" width="17" height="17"/>
+        <image name="Xlarge Icons Filled-30.png" width="30" height="30"/>
+        <image name="Save.png" width="30" height="30"/>
+        <image name="Chat.png" width="18" height="18"/>
+        <image name="contactlist.png" width="18" height="18"/>
+        <image name="loading.jpg" width="300" height="287"/>
+    </resources>
+</document>

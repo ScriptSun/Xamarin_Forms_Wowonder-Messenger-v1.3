@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:local="clr-namespace:WowonderPhone;assembly=WowonderPhone"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.Timeline_Pages.SettingsNavPages.Notification_Page" Title="{ languish:Translate Label_Notifications }" Disappearing="Notification_Page_OnDisappearing">
+
+  <StackLayout Orientation="Vertical"  VerticalOptions="FillAndExpand" BackgroundColor="White"  >
+    <ScrollView Orientation="Vertical"  VerticalOptions="FillAndExpand">
+      <Grid BackgroundColor="#F5F5F5" VerticalOptions="FillAndExpand" Margin="0,0,0,0" >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition  Height="195"></RowDefinition>
+          <RowDefinition  Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Frame Grid.Row="0"  Grid.Column="0"  OutlineColor="White"   HasShadow="True" Padding="1,1,1,1" BackgroundColor="White">
+            <TableView BackgroundColor="White"   Intent="Settings"  HasUnevenRows="True" Grid.Row="0" Grid.Column="0" >
+              <TableRoot>
+                            <TableSection Title="{ languish:Translate Label_Notification_Settings }">
+                  <ViewCell x:Name="Myprofile" Height="170" >
+                    <StackLayout Orientation="Vertical" Margin="5,0,0,0">
+                      <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                            <Label x:Name ="VibrateText" FontSize="15" FontAttributes="None" HorizontalOptions="Start" Margin="5,17,6,0" Text="{ languish:Translate Label_Vibrate }" TextColor="Black" />
+                        <Switch x:Name="NotifyVibrate" Toggled="NotifyVibrate_OnToggled" HorizontalOptions="EndAndExpand" TranslationX="-7" IsToggled="True"></Switch>
+                      </StackLayout>
+                      <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                            <Label x:Name="WhoCanmessgamelabel" FontSize="15" HorizontalOptions="Start" FontAttributes="None" Margin="5,17,6,0" Text="{ languish:Translate Label_Sound }" TextColor="Black" />
+                        <Switch x:Name="NotifySound" Toggled="NotifySound_OnToggled" HorizontalOptions="EndAndExpand" TranslationX="-7" IsToggled="True"></Switch>
+                      </StackLayout>
+                      <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                            <Label x:Name="PopupLabel" FontSize="15" FontAttributes="None" Margin="5,17,6,0" HorizontalOptions="Start" Text="{ languish:Translate Label_Popup_Notification }" TextColor="Black" />
+                        <Switch x:Name="NotifyPopup"  Toggled="NotifyPopup_OnToggled" HorizontalOptions="EndAndExpand" TranslationX="-7" IsToggled="True"></Switch>
+                      </StackLayout>
+                    </StackLayout>
+                  </ViewCell>
+                </TableSection>
+              </TableRoot>
+            </TableView>
+        </Frame>
+        <StackLayout Orientation="Vertical" Padding="3,0,5,3" Grid.Row="1" TranslationY="-1" Grid.Column="0" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+          <ListView x:Name="LedList"  IsVisible="True" VerticalOptions="FillAndExpand"  ItemSelected="LedList_OnItemSelected" ItemTapped="LedList_OnItemTapped" SeparatorVisibility="None" HasUnevenRows="True" BackgroundColor="White" >
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell Height="50" >
+                  <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                    <Label FontSize="16" FontAttributes="None" HorizontalOptions="Start" Margin="6,15,6,0" Text="{Binding ColorText}" TextColor="Black" />
+                    <Label x:Name="Checkbutton" FontSize="25" HorizontalOptions="EndAndExpand" Text="{Binding Checkicon}" Style="{StaticResource FontIcon}" FontFamily="{x:Static shared:FontAwesome.FontName}" TextColor="{Binding CheckiconColor}" TranslationX="-8"  Margin="0,15,0,0"/>
+                  </StackLayout>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </StackLayout>
+      </Grid>
+    </ScrollView>
+  </StackLayout>
+
+</ContentPage>

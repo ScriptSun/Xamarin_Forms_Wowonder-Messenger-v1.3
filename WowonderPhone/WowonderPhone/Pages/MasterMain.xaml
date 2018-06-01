@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:tabs="clr-namespace:WowonderPhone.Pages.Tabs;assembly=WowonderPhone"   
+            xmlns:local="clr-namespace:WowonderPhone"
+            xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+            x:Class="WowonderPhone.Pages.MasterMain" Title="{ x:Static local:Settings.MainPage_HeaderTextLabel }"  >
+
+
+  <ContentPage.ToolbarItems>
+
+  <ToolbarItem x:Name="Settings" Icon="SettingsWhite.png" Text="{ languish:Translate Label_Settings }" Clicked="Settings_OnClicked" >                 
+    <ToolbarItem.Order>                     
+      <OnPlatform x:TypeArguments="ToolbarItemOrder"  iOS="Primary"   Android="Secondary" />                
+    </ToolbarItem.Order>             
+  </ToolbarItem> 
+        
+  <ToolbarItem x:Name="Newfriends" Icon="User.png" Clicked="Newfriends_OnClicked" >                 
+    <ToolbarItem.Order>                     
+      <OnPlatform x:TypeArguments="ToolbarItemOrder"  iOS="Primary"   Android="Primary"/>                
+    </ToolbarItem.Order>             
+  </ToolbarItem>  
+
+
+  <ToolbarItem x:Name="Searchcontact" Icon="Search.png" Clicked="Searchcontact_OnClicked" >                 
+    <ToolbarItem.Order>                     
+      <OnPlatform x:TypeArguments="ToolbarItemOrder"  iOS="Primary"   Android="Primary"/>                
+    </ToolbarItem.Order>             
+  </ToolbarItem>  
+
+</ContentPage.ToolbarItems>
+    
+        
+    <TabbedPage.Children>
+        <tabs:ChatActivityTab  Title="{ languish:Translate Label_Chats }"   >
+           <ContentPage.Icon>     
+            <OnPlatform x:TypeArguments="FileImageSource">       
+            <OnPlatform.iOS>ChatTab</OnPlatform.iOS>     
+            </OnPlatform>   
+            </ContentPage.Icon>
+       </tabs:ChatActivityTab>
+        
+         <tabs:ContactsTab  Title="{ languish:Translate Label_Contacts }"  >
+         <ContentPage.Icon>     
+            <OnPlatform x:TypeArguments="FileImageSource">       
+            <OnPlatform.iOS>UserTab</OnPlatform.iOS>     
+            </OnPlatform>   
+           </ContentPage.Icon>
+         </tabs:ContactsTab>
+        
+        </TabbedPage.Children>
+      
+</TabbedPage>

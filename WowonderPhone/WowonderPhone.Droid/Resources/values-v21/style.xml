@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<resources>
+
+  <color name="primary">@color/AccentColor</color>
+  <color name="primary_dark">@color/AccentColor</color>
+  <color name="actionbar_tab_indicator">@color/AccentColor</color>
+
+
+
+  <!-- Theme -->
+  
+
+    <style name="AppTheme" parent="MainTheme.Base">
+    </style>
+    <!-- Base theme applied no matter what API -->
+    <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+      <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
+      <item name="windowNoTitle">true</item>
+      <!--We will be using the toolbar so no need to show ActionBar-->
+      <item name="windowActionBar">false</item>
+      <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
+      <!-- colorPrimary is used for the default action bar background -->
+      <item name="colorPrimary">@color/AccentColor</item>
+      <!-- colorPrimaryDark is used for the status bar -->
+      <item name="colorPrimaryDark">#444</item>
+      <!-- colorAccent is used as the default value for colorControlActivated
+         which is used to tint widgets -->
+      <item name="colorAccent">@color/AccentColor</item>
+      <!-- You can also set colorControlNormal, colorControlActivated
+         colorControlHighlight and colorSwitchThumbNormal. -->
+      <item name="windowActionModeOverlay">true</item>
+      <item name="colorControlNormal">#ffff</item>
+
+      <!-- Dialog attributes -->
+      <item name="dialogTheme">@style/AppTheme.Dialog</item>
+      <!-- AlertDialog attributes -->
+      <item name="alertDialogTheme">@style/AppTheme.Dialog</item>
+      
+      <!--<item name="datePickerDialogTheme">@style/AppCompatDialogStyle</item>-->
+    </style>
+
+    <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+      <item name="colorAccent">@color/AccentColor</item>
+    </style>
+
+
+  <style name="AppTheme.Dialog" parent="@style/Theme.AppCompat.Light.Dialog">
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+    <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+    <item name="android:textColorAlertDialogListItem">@color/AccentColor</item>
+    <item name="android:textColor">@color/AccentColor</item>
+    <item name="colorAccent">@color/AccentColor</item>
+    <item name="android:borderlessButtonStyle">@style/Widget.AppTheme.Button.Borderless</item>
+  </style>
+</resources>

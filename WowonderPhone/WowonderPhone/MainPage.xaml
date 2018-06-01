@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WowonderPhone"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:local1="clr-namespace:WowonderPhone.Controls;assembly=WowonderPhone"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             x:Class="WowonderPhone.MainPage" BackgroundImage="{ x:Static local:Settings.Background_Image_LoginPage }">
+
+  
+<ContentPage.Content>
+		<AbsoluteLayout>
+			
+			<!-- GRADIENT-->
+			<Image 
+				AbsoluteLayout.LayoutBounds="0,0,1,44"
+				AbsoluteLayout.LayoutFlags="WidthProportional"
+				Style="{ StaticResource StatusBarShimStyle }"
+				VerticalOptions="Start"/>
+
+			<ScrollView
+				AbsoluteLayout.LayoutBounds="0,0,1,1"
+				AbsoluteLayout.LayoutFlags="All"
+				VerticalOptions="FillAndExpand"	
+				Padding="{ DynamicResource MainWrapperPadding }">
+				
+		<!-- MAIN CONTAINER -->
+				<Grid
+					ColumnSpacing="0" 
+					RowSpacing="0"
+					Padding="20,30,20,10"
+					HorizontalOptions="Fill"
+					VerticalOptions="FillAndExpand" >
+
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+				
+					<!-- CLOSE ICON -->
+					<Label 
+						Grid.Row="0"
+						TextColor="White"
+						Style="{DynamicResource IconCloseLabelStyle}" 
+						HorizontalOptions="End"
+            TranslationY="0"
+						VerticalOptions="Start">
+						<Label.GestureRecognizers>
+							<TapGestureRecognizer Tapped="OnCloseButtonClicked" />
+						</Label.GestureRecognizers>
+					</Label>
+
+					<!-- HEADER -->
+					<StackLayout 
+						Grid.Row="0" 
+						Spacing="5"
+						Padding="0,20,0,0"
+						InputTransparent="true">
+						
+						<!-- LOGO -->
+						<Grid
+							Grid.Row="1" 
+							WidthRequest="60"
+							HeightRequest="60"
+							VerticalOptions="Center"
+							HorizontalOptions="Center">
+							<BoxView
+								BackgroundColor="Transparent"/>
+							<Label
+								TextColor="White"
+								FontSize="45"
+								Text="{ x:Static local1:IoniciconsFont.IosPaperplane }" 
+								Style="{StaticResource IoniconsFontIcon}"
+								HorizontalTextAlignment="Center"
+								VerticalTextAlignment="Center"/>
+						</Grid>
+
+						<!-- WELCOME TEXT -->
+						<Label
+							Text="{x:Static local:Settings.Welcome_to}"
+							FontSize="22"
+							HorizontalTextAlignment="Center"
+							TextColor="White"/>
+						
+						<Label
+							Text="{languish:Translate Label_Use_your_credentials_to_login}"
+							HorizontalTextAlignment="Center"
+              TextColor="White"
+							FontSize="15"/>
+						
+						<!--SEPARATOR-->
+						<BoxView
+							WidthRequest="80"
+							HeightRequest="1"
+							HorizontalOptions="Center"
+							VerticalOptions="End"
+							BackgroundColor="White"/>
+					</StackLayout>
+
+
+			
+					
+
+					<!---FIELDS CONTAINER-->
+					<Grid
+						Grid.Row="1"
+						RowSpacing="30"
+						Padding="0,20,0,20"
+						VerticalOptions="Center">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						
+						<!-- ICON BACKGROUND -->
+						<Label
+							Grid.Column="0"
+							Grid.Row="0"
+							FontSize="40"
+							Text="{Binding Shape}"
+							Style="{StaticResource RoundShape}" 
+							HorizontalTextAlignment="Center"
+							TextColor="{DynamicResource PlaceholderColor}"
+							VerticalOptions="Center"
+						    HorizontalOptions="Center"
+							/>
+
+						<!-- ICON -->
+						<Label
+							Grid.Column="0"
+							Grid.Row="0"
+							FontSize="14"
+							Text="{ x:Static local1:WowonderShapesFont.Email }" 
+							Style="{StaticResource WowondershapesFontIcon}"
+							HorizontalTextAlignment="Center"
+							TextColor="White"
+							VerticalOptions="Center"
+							HorizontalOptions="Center"
+							/>
+
+						<!--EMAIL FIELD-->
+						<Entry
+							Grid.Column="1"
+							Grid.Row="0"
+							HeightRequest="40"
+							Placeholder="E-mail"
+              Keyboard="Default"
+              x:Name="usernameEntry"
+              TextColor="White"
+              Style="{DynamicResource ArtinaLoginEntryStyle}"
+							PlaceholderColor="White"/>
+
+						<!-- ICON BACKGROUND -->
+						<Label
+							Grid.Column="0"
+							Grid.Row="1"
+							FontSize="40"
+							Text="{Binding Shape}"
+							Style="{StaticResource RoundShape}" 
+							HorizontalTextAlignment="Center"
+							TextColor="{DynamicResource PlaceholderColor}"
+							VerticalOptions="Center"
+						    HorizontalOptions="Center"
+							/>
+
+						<!-- ICON -->
+						<Label
+							Grid.Column="0"
+							Grid.Row="1"
+							FontSize="14"
+							Text="{ x:Static local1:WowonderShapesFont.Lock }" 
+							Style="{StaticResource WowondershapesFontIcon}"
+							HorizontalTextAlignment="Center"
+							TextColor="White"
+							VerticalOptions="Center"
+							HorizontalOptions="Center"
+							/>
+
+						<!-- PASSWORD ENTRY -->
+						<Entry
+							Grid.Column="1"
+							Grid.Row="1"
+              x:Name="passwordEntry"
+							HeightRequest="40"
+							Placeholder="{languish:Translate Label_Password}"
+							IsPassword="True"
+              TextColor="White"
+              Style="{DynamicResource ArtinaLoginEntryStyle}"
+							PlaceholderColor="White"/>
+
+					</Grid>
+
+					<!-- BUTTONS -->
+					<StackLayout 
+						Grid.Row="2"
+						Spacing="10"
+						Padding="0,10,0,0"
+						HorizontalOptions="FillAndExpand"
+						VerticalOptions="End" >
+
+						<!-- LOGIN -->
+						<controls:ExtendedButton
+							Style="{DynamicResource PrimaryActionButtonStyle}"
+							VerticalOptions="End"
+							Text="{languish:Translate Label_Login}"
+              Clicked="OnLoginClicked"
+							WidthRequest="200"
+							HorizontalOptions="Fill"/>
+
+						<Label 
+							Text="Or connect with" 
+							FontSize="13" TextColor="White"
+							HorizontalTextAlignment="Center"/>
+
+						<!-- FACEBOOK -->
+            <controls:ExtendedButton
+              x:Name="Facebook"
+							Style="{ DynamicResource PrimaryActionButtonStyle }"
+							BackgroundColor="#3b5998"
+							VerticalOptions="End"
+							Text="Facebook"
+							WidthRequest="200"
+              IsVisible="False" Clicked="Facebook_OnClicked"
+							HorizontalOptions="Fill"/>
+
+						<!-- TWITTER -->
+            <controls:ExtendedButton
+               x:Name="Twitter"
+							Style="{DynamicResource PrimaryActionButtonStyle}"
+							BackgroundColor="#1DA1F2"
+							VerticalOptions="End"
+							Text="Twitter"
+							WidthRequest="200"
+               IsVisible="False"
+                Clicked="TwitterButton_OnClicked_OnClicked"
+							HorizontalOptions="Fill"/>
+            
+            <!-- INSTAGRAM -->
+            <controls:ExtendedButton
+              x:Name="Instagram"
+							Style="{DynamicResource PrimaryActionButtonStyle}"
+							BackgroundColor="#155787"
+							VerticalOptions="End"
+							Text="Twitter"
+							WidthRequest="200"
+              IsVisible="False"
+                Clicked="Instagram_OnClicked"
+							HorizontalOptions="Fill"/>
+
+            <!-- GOOGLE -->
+            <controls:ExtendedButton
+              x:Name="Google"
+							Style="{DynamicResource PrimaryActionButtonStyle}"
+							BackgroundColor="	#dd4b39"
+							VerticalOptions="End"
+							Text="Google"
+							WidthRequest="200"
+              IsVisible="False"
+                Clicked="Google_OnClicked"
+							HorizontalOptions="Fill"/>
+
+
+
+                        <!-- Vkontakte -->
+            <controls:ExtendedButton
+              x:Name="Vkontakte"
+							Style="{DynamicResource PrimaryActionButtonStyle}"
+							BackgroundColor="#597ba0"
+							VerticalOptions="End"
+							Text="Vkontakte"
+							WidthRequest="200"
+              IsVisible="False"
+                Clicked="Vk_OnClicked"
+							HorizontalOptions="Fill"/>
+						
+						<!--SEPARATOR-->
+						<BoxView 
+							Grid.Row="4" 
+							HeightRequest="1"
+							VerticalOptions="Start"
+							HorizontalOptions="Center"
+							WidthRequest="300"
+							BackgroundColor="{DynamicResource PlaceholderColor}"/>
+
+						<Label 
+							Grid.Row="4"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"
+							FontSize="14"
+              TextColor="White"
+							Text="{languish:Translate Label_Forget_My_Password}">
+              <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
+              </Label.GestureRecognizers>
+             </Label>
+					</StackLayout>
+	
+				</Grid>
+			</ScrollView>
+		</AbsoluteLayout>
+</ContentPage.Content>
+  
+ <!--<ScrollView>
+   
+    <Grid
+			ColumnSpacing="0"
+			RowSpacing="0"
+			HorizontalOptions="Fill"
+			VerticalOptions="FillAndExpand" >
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="100" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="100" />
+      </Grid.RowDefinitions>
+
+
+      <Grid
+     ColumnSpacing="0"
+     RowSpacing="0"
+     HorizontalOptions="Fill" WidthRequest="150" >
+        <Grid.RowDefinitions>
+          <RowDefinition Height="50" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="60" />
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="30"></ColumnDefinition>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+          <ColumnDefinition Width="30"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="logso" Grid.Column="1" TranslationY="65"  Source="{ x:Static local:Settings.Logo_Image_LoginPage }"   WidthRequest="140"
+          Grid.Row="0"
+			/>
+      </Grid>
+
+
+
+  
+      <Grid
+				Padding="40, 0"
+				ColumnSpacing="0"
+				RowSpacing="0"
+				VerticalOptions="CenterAndExpand"
+				Grid.Row="1"
+				HeightRequest="195">
+
+        <StackLayout
+					Grid.Row="0"
+					VerticalOptions="StartAndExpand" >
+    
+          <Entry
+						Placeholder="{ x:Static local:Settings.Label_Username }"
+            Keyboard="Default"
+            x:Name="usernameEntry"
+						Style="{DynamicResource ArtinaLoginEntryStyle}" />
+
+          <Label
+						HorizontalOptions="Start"
+						Text=" Please enter a valid e-mail " IsVisible="false"
+						Style="{DynamicResource ValidationEntryErrorStyle}"
+						/>
+
+        </StackLayout>
+
+        <Entry
+					Grid.Row="2"
+					Placeholder="{ x:Static local:Settings.Label_Password }"
+					IsPassword="true"
+          PlaceholderColor="#ffff"
+          x:Name="passwordEntry"
+          Keyboard="Default"
+					Style="{DynamicResource ArtinaLoginEntryStyle}"
+					VerticalOptions="StartAndExpand" />
+
+
+
+        <StackLayout  Grid.Row="3" x:Name="LoadingPanel" VerticalOptions="StartAndExpand" IsVisible="False"  TranslationY="30" >
+          <ActivityIndicator x:name="Loader" Color="#EFEFEF" IsRunning="true" IsVisible="True"/>
+        </StackLayout>
+
+      </Grid>
+
+
+       
+
+      <StackLayout TranslationY="-30"
+				HorizontalOptions="Fill"
+				VerticalOptions="EndAndExpand"
+				Padding="20,-10,20,0"
+				Grid.Row="2" >
+
+        <controls:ExtendedButton
+          Clicked="OnLoginClicked"
+          Style="{DynamicResource PrimaryActionButtonStyle}"
+          Text="{ x:Static local:Settings.Label_Login }"
+          VerticalOptions="End"/>
+
+        --><!--<controls:ExtendedButton
+         x:Name="LoginsocialButton"
+         Clicked="LoginsocialButton_OnClicked"
+         Style="{DynamicResource SecondaryActionButtonStyle}"
+         Text="{ x:Static local:Settings.Label_Use_Social_Logins }"
+         VerticalOptions="End"/>--><!--
+
+        --><!--<Button
+					Style="{DynamicResource TransparentButtonStyle}"
+          x:Name="ForgetButton"
+          Clicked="ForgetButton_OnClicked"
+					Text="Forget Password ?" VerticalOptions="End" />--><!--
+
+
+
+      </StackLayout>
+
+    </Grid>
+  </ScrollView>-->
+</ContentPage>

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<resources>
+
+  <!-- Splash styles -->
+  <style name="Theme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowBackground">@drawable/splashscreen</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowIsTranslucent">false</item>
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:backgroundDimEnabled">true</item>
+  </style>
+
+  <!-- Theme -->
+  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    <!-- Set AppCompat’s color theming attrs -->
+
+    <!-- colorPrimary is used for the default action bar background -->
+    <item name="colorPrimary">@color/AccentColor</item>
+
+    <!-- colorPrimaryDark is used for the status bar 
+		<item name="colorPrimaryDark">@color/AccentColor</item>-->
+
+    <!-- colorAccent is used as the default value for colorControlActivated,
+		     which is used to tint widgets -->
+    <item name="colorAccent">@color/AccentColor</item>
+
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+
+    <!-- Used on ListView selected items -->
+    <item name="android:color">@color/AccentColor</item>
+    <item name="android:colorPressedHighlight">@color/AccentColor</item>
+    <item name="android:colorLongPressedHighlight">@color/AccentColor</item>
+    <item name="android:colorFocusedHighlight">@color/AccentColor</item>
+    <item name="android:colorActivatedHighlight">@color/AccentColor</item>
+    <item name="android:activatedBackgroundIndicator">@color/AccentColor</item>
+
+
+    <!-- Main theme colors -->
+    <!--   your app branding color for the app bar -->
+    <item name="android:colorPrimary">@color/AccentColor</item>
+    <!--   darker variant for the status bar and contextual app bars 
+		<item name="android:colorPrimaryDark">@color/primary_dark</item>-->
+    <!--   theme UI controls like checkboxes and text fields -->
+    <item name="android:colorAccent">@color/AccentColor</item>
+
+    <!-- Dialog attributes -->
+    <item name="dialogTheme">@style/AppTheme.Dialog</item>
+    <!-- AlertDialog attributes -->
+    <item name="alertDialogTheme">@style/AppTheme.Dialog</item>
+
+    <item name="drawerArrowStyle">@style/AppTheme.DrawerArrowStyle</item>
+
+    <item name="android:showDividers">none</item>
+    <item name="android:divider">@null</item>
+
+
+    <item name="android:datePickerStyle">@style/Widget.AppTheme.Picker</item>
+  </style>
+
+  <!-- Adding animation to hamburguer icon, and overriding color  to fix weird color change bug on app compat -->
+  <style name="AppTheme.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+    <item name="spinBars">true</item>
+    <item name="color">#FFFFFF</item>
+  </style>
+
+  <style name="AppTheme.Dialog" parent="@style/Theme.AppCompat.Light.Dialog">
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+    <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+    <item name="android:textColorAlertDialogListItem">@color/AccentColor</item>
+    <item name="android:textColor">@color/AccentColor</item>
+    <item name="colorAccent">@color/AccentColor</item>
+    <item name="android:borderlessButtonStyle">@style/Widget.AppTheme.Button.Borderless</item>
+  </style>
+
+
+  <style name="Widget.AppTheme.Button.Borderless" parent="@style/Widget.AppCompat.Button.Borderless">
+    <item name="android:textColor">#FF00FF</item>
+    <item name="android:textAppearance">@style/TextAppearance.AppTheme.DialogButton</item>
+  </style>
+
+  <style name="Widget.AppTheme.TabLayout" parent="@style/Widget.Design.TabLayout">
+    <item name="tabSelectedTextColor">@color/AccentColor</item>
+
+    <item name="tabTextColor">@color/BaseTextColor</item>
+  </style>
+
+  <style name="Widget.AppTheme.Picker" parent="@style/Theme.AppCompat.Light.Dialog">
+    <item name="android:colorPrimary">@color/AccentColor</item>
+    <item name="android:colorPrimaryDark">@color/AccentColor</item>
+    <item name="android:colorAccent">@color/AccentColor</item>
+    <item name="android:textColor">@color/AccentColor</item>
+  </style>
+
+  <style name="TextAppearance.AppTheme.DialogButton" parent="@style/TextAppearance.AppCompat.Title">
+  </style>
+
+</resources>

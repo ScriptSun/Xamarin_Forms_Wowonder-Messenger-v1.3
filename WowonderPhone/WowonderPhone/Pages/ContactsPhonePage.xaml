@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.ContactsPhonePage"
+             Title="{ languish:Translate Label_Select_a_contact }">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="RefreshContacts" Text="{ languish:Translate Label_Refresh_Contacts }" Order="Secondary" Clicked="RefreshContacts_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <ListView x:Name="ActionsListview"  VerticalOptions="FillAndExpand" ItemTapped="ActionsListview_OnItemTapped" SeparatorVisibility="None" ItemSelected="ActionsListview_OnItemSelected"     IsGroupingEnabled="False" BackgroundColor="White" HasUnevenRows='True' >
+              <ListView.ItemTemplate>
+                  <DataTemplate>
+                      <ViewCell>
+                          <StackLayout Orientation="Vertical" Padding="5,5,3,5">
+                              <StackLayout Orientation="Horizontal">
+                                    <forms:CachedImage x:Name="CoverImage" Aspect="AspectFill"   HorizontalOptions="Start" HeightRequest="62" WidthRequest="62"  Source="UserContact.png" FadeAnimationEnabled="True"  DownsampleToViewSize="true"  >
+                                        <forms:CachedImage.Transformations>
+                                            <transformations:CircleTransformation BorderHexColor="#fff" BorderSize="1" />
+                                        </forms:CachedImage.Transformations>
+                                    </forms:CachedImage>
+                                    
+                                  <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                        <StackLayout Padding="8,0,0,0" TranslationY="2" HorizontalOptions="FillAndExpand">
+                                            <Label FontSize="15" TextColor="#444" FontAttributes="Bold" Text="{Binding Name}" />
+                                        </StackLayout>
+
+                                        <Label FontSize="11" TranslationX="6" TextColor="#BFBFBF" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Text="{Binding Phone}" />
+                                    </StackLayout>
+                                </StackLayout>
+                             
+                          </StackLayout>
+                      </ViewCell>
+                  </DataTemplate>
+              </ListView.ItemTemplate>
+          </ListView>
+
+      </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WowonderPhone.Pages.Tabs.ContactsTab"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             xmlns:customCells="clr-namespace:WowonderPhone.Pages.CustomCells;assembly=WowonderPhone"
+             BackgroundColor="White">
+
+    <Grid>
+        <ListView x:Name="ContactListview" ItemTapped="ContactListview_OnItemTapped"  ItemSelected="ContactListview_OnItemSelected"  Refreshing="ContactListview_OnRefreshing"  IsPullToRefreshEnabled ="true"  IsGroupingEnabled="False" BackgroundColor="White" HasUnevenRows='True' >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnDelete" CommandParameter="{Binding Username}" Text="Delete" IsDestructive="True" />
+                        </ViewCell.ContextActions>
+                        <StackLayout Orientation="Vertical" Padding="2,5,2,5">
+                            <StackLayout Orientation="Horizontal">
+                                <AbsoluteLayout >
+                                    <forms:CachedImage x:Name="CoverImage" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="52" WidthRequest="52" LoadingPlaceholder="UserContact.png" Source="{Binding profile_picture}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                        <forms:CachedImage.Transformations>
+                                            <transformations:CircleTransformation BorderHexColor="#fff" BorderSize="1" />
+                                        </forms:CachedImage.Transformations>
+
+                                    </forms:CachedImage>
+                                    <!--<Image Source="{Binding profile_picture}" HorizontalOptions="Start" Aspect="Fill" HeightRequest="50" WidthRequest="50"  />-->
+                                    <Grid >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="14" />
+                                            <RowDefinition Height="14" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="28" />
+                                            <ColumnDefinition Width="14" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image  Source="{Binding lastseen}" Grid.Row="0" Grid.Column="1" HeightRequest="5" WidthRequest="5" Aspect="Fill"/>
+
+                                    </Grid>
+                                </AbsoluteLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label FontSize="14" TextColor="#444" FontAttributes="Bold" Text="{Binding Username}" />
+                                    <Label FontSize="12" TextColor="#888" Text="{Binding LastMessageDateTime}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                    <Label FontSize="11" TextColor="#BFBFBF" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Text="{Binding Platform}" />
+                                </StackLayout>
+                            </StackLayout>
+                            <!--<Image  Margin="5,-23,0,0"  Source="{Binding verified}" Height="12" Width="12" HorizontalOptions="End"  />-->
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!--<Grid
+            VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <customCells:CustomActivityIndicator
+                Grid.Row="0"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand"/>
+            <Label
+                Grid.Row="1"
+                HorizontalTextAlignment="Center"
+                Text="Loading..." />
+        </Grid>-->
+        
+        <Grid  BackgroundColor="White" IsVisible="False" x:Name="EmptyContactPage">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60*"/>
+                    <RowDefinition Height="40*"/>
+                </Grid.RowDefinitions>
+
+
+                <!--ICON BACKGROUND-->
+                <Label
+                    Grid.Row="0"
+                    Text="&#xf111;"
+                    Style="{StaticResource DefaultFontColor}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    FontSize="200"
+                    Opacity="0.1"/>
+
+                <!--ICON BACKGROUND-->
+                <Label
+                    Grid.Row="0"
+                    Text="&#xf111;"
+                    Style="{StaticResource DefaultFontColor}"
+            
+                    VerticalOptions="Center"
+        
+                    HorizontalOptions="Center"
+                    FontSize="130"
+                    Opacity="0.1"/>
+
+                <!--ICON-->
+                <Label
+                    Grid.Row="0"
+                    Text="&#xf070;"
+                    Style="{StaticResource DefaultFontColor}"
+                    FontSize="50"
+                    HorizontalTextAlignment="Center"
+             
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+
+                <!--TEXT -->
+                <StackLayout
+                    Grid.Row="1"
+                    VerticalOptions="Center"
+                    Padding="35,0"
+                    Spacing="2">
+                    <Label
+                        TranslationY="-3"
+                        HorizontalTextAlignment="Center"
+                        Text="{ languish:Translate Label_Empty_Contacts }"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        TextColor="#444"/>
+                    <Label
+                        TranslationY="3"
+                        HorizontalTextAlignment="Center"
+                        Opacity="0.8"
+                        Text="{languish:Translate Label_Start_Adding_New_Contacts }"
+                        FontSize="18"
+                        TextColor="#444"/>
+                </StackLayout>
+
+            </Grid>
+
+            <!--BUTTON-->
+            <StackLayout Padding="30,0,30,3" TranslationY="-7" Grid.Row="1">
+                <Button
+                    x:Name="SearchButton"
+                    Style="{DynamicResource SecondaryActionButtonStyle}"
+                    VerticalOptions="End"
+                    Text="{ languish:Translate Label_Search_Random }"
+                    Margin="2"
+                    Clicked="SearchButton_OnClicked"
+            
+                />
+                <Button
+                    x:Name="RefreshButton"
+                    Style="{DynamicResource PrimaryActionButtonStyle}"
+                    VerticalOptions="End"
+                    Text="{ languish:Translate Label_Refresh }"
+                    Margin="2"
+                    Clicked="RefreshButton_Clicked"
+            
+                />
+            </StackLayout>
+        </Grid>
+    </Grid>
+
+</ContentPage>

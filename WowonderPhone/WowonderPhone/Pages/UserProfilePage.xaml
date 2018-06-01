@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:vipStyles="clr-namespace:WowonderPhone.Pages.CustomCells.Vip_Styles;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.UserProfilePage" Title="Profile" BackgroundColor="White" Disappearing="UserProfilePage_OnDisappearing">
+
+   
+
+    <ScrollView  x:Name="outerScrollView">
+        <!--GRID WRAPPER-->
+        <Grid Padding="0" x:Name="layeringGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--SOCIAL HEADER-->
+            <Grid Grid.Row="0"  HeightRequest="250" BackgroundColor="Black" Padding="0">
+
+                <!--BACKGROUND IMAGE-->
+                <forms:CachedImage x:Name="CoverImage" IsOpaque="false" Opacity="0.6" BackgroundColor="#a84849" Aspect="AspectFill"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                </forms:CachedImage>
+
+                <StackLayout Orientation="Vertical"  Spacing="20">
+                    <Grid HorizontalOptions="Center" VerticalOptions="Center"  TranslationY="25">
+                        <!--AVATAR-->
+                        <shared:CircleImage x:Name="AvatarImage" BorderColor="White" Source="default_profile_6_400x400.png" WidthRequest="85" HeightRequest="85"/>
+                        <vipStyles:StarMember x:Name="StarIcon" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Start" TranslationX="39"/>
+                        <vipStyles:HotMember x:Name="HotIcon" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Start" TranslationX="39"/>
+                        <vipStyles:UltimaMember x:Name="UltimaIcon" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Start" TranslationX="39"/>
+                        <vipStyles:VIPMember x:Name="VIPIcon" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Start" TranslationX="39"/>
+                    </Grid>
+                    <!--USER NAME AND DESCRIPTION-->
+                    <StackLayout Padding="15">
+                        <Label x:Name="Username" Text="" TextColor="White" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="19" />
+                        <Label x:Name="LastseenLabel" TextColor="White" HorizontalTextAlignment="Center" FontSize="15" Text="" />
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- TOOLBAR -->
+                <Grid VerticalOptions="End" Style="{StaticResource ToolbarStyle}"  BackgroundColor="#ffff">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2" />
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="2" />
+                    </Grid.RowDefinitions>
+                    <controls:ImageButton TextColor="White" Grid.Column="0"  Grid.Row="1" x:Name="ActionButton" Clicked="ActionButton_OnClicked" Text="{ languish:Translate Label_View_Full_Profile }"  BorderWidth="0" BackgroundColor="#A84849"  HorizontalOptions="CenterAndExpand" WidthRequest="350" HeightRequest="40"    />
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Row="1"   >
+                <StackLayout Padding="0,0,0,0" Grid.Row="0" Grid.Column="0"  HorizontalOptions="FillAndExpand" >
+                    <ListView x:Name="UserInfoList" HeightRequest="500"  VerticalOptions="Start" SeparatorColor="White"  ItemSelected="UserInfoList_OnItemSelected" ItemTapped="UserInfoList_OnItemTapped"  SeparatorVisibility="Default" HasUnevenRows="True" BackgroundColor="White">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Height="40" >
+                                    <StackLayout Orientation="Horizontal" Margin="5,8,0,8">
+                                        <Grid Padding="0" x:Name="layeringGrid">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="29" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Column="0" Grid.Row="0" FontSize="17"  FontAttributes="None" Style="{StaticResource FontIcon}" FontFamily="{x:Static shared:FontAwesome.FontName}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TranslationY="2"  Text="{Binding Icon}" TextColor="{Binding Color}" />
+                                            <Label Grid.Column="1" Grid.Row="0" FontSize="17" LineBreakMode="WordWrap"  FontAttributes="None" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,2,0,0" Text="{Binding Label}" TextColor="#444"  />
+                                        </Grid>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

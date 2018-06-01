@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             x:Class="WowonderPhone.Pages.MyProfilePage" Title="{ languish:Translate Label_My_Profile }">
+    <ScrollView>
+        <!--GRID WRAPPER-->
+        <Grid Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--SOCIAL HEADER-->
+            <Grid Grid.Row="0" HeightRequest="250" BackgroundColor="#000000" Padding="0">
+                <!-- BACKGROUND IMAGE -->
+                <Image Source="{ StaticResource SocialHeaderBackgroundImage1 }" IsOpaque="false" Opacity="0.6" BackgroundColor="#A84849" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="CoverImage"/>
+
+                <StackLayout Orientation="Vertical"  Spacing="20">
+                    <Grid HorizontalOptions="Center" VerticalOptions="Center"  TranslationY="25">
+                        <!-- AVATAR -->
+                        <shared:CircleImage x:Name="AvatarImage" BorderColor="White" Source="default_profile_6_400x400.png" WidthRequest="85" HeightRequest="85"/>
+                    </Grid>
+                    <!-- USER NAME AND DESCRIPTION -->
+                    <StackLayout Padding="20">
+                        <Label x:Name="Username" Text="Unavailable" TextColor="White" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="19" />
+                        <Label TextColor="White" HorizontalTextAlignment="Center" FontSize="15" Text="Online" />
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- TOOLBAR -->
+                <Grid VerticalOptions="End" Style="{StaticResource ToolbarStyle}"  BackgroundColor="{StaticResource TranslucidWhite}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <controls:ImageButton Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"  x:Name="UploadAvatar" Clicked="UploadAvatar_OnClicked" Text="{ languish:Translate Label_Upload_Avatar }" HeightRequest="35" ImageHeightRequest="15" ImageWidthRequest="15" WidthRequest="150" TextColor="White" FontSize="12" BackgroundColor="#A84849" Image="Avatar.png" Orientation="ImageToLeft"></controls:ImageButton>
+                    <controls:ImageButton  Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"  x:Name="UploadCover" Clicked="UploadCover_OnClicked" Text="{ languish:Translate Label_Upload_Cover }" HeightRequest="35" Margin="5,0,0,0" WidthRequest="150" ImageHeightRequest="12" ImageWidthRequest="12" FontSize="12" TextColor="White" BackgroundColor="#A84849" Image="Cover.png" Orientation="ImageToLeft"></controls:ImageButton>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="0">
+                <StackLayout Orientation="Vertical" Padding="5,0,0,0">
+                    <StackLayout Orientation="Horizontal" Margin="7,0,0,0">
+                        <Label FontSize="16" FontAttributes="None" Margin="5,17,6,0" Text="{ languish:Translate Label_First_Name }" HorizontalOptions="Start" TextColor="#444" />
+                        <Entry x:Name="Firstname" FontSize="15" Placeholder="Empty"  Style="{DynamicResource WowonderTextEntryStyle}" HorizontalOptions="EndAndExpand"  WidthRequest="220" Margin="0,8,6,0" TextColor="#444"  ></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="7,0,0,0">
+                        <Label FontSize="16" FontAttributes="None" Margin="5,17,6,0" Text="{ languish:Translate Label_Last_Name } " HorizontalOptions="Start" TextColor="#444" />
+                        <Entry x:Name="LastName" FontSize="15" HorizontalOptions="CenterAndExpand" Style="{DynamicResource WowonderTextEntryStyle}"  Placeholder="Empty"  WidthRequest="220" TranslationX="10" Margin="0,8,6,0" TextColor="#444" ></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="7,0,0,0">
+                        <Label FontSize="16" FontAttributes="None" Margin="5,17,6,0" Text="{ languish:Translate Label_About_Me }" TextColor="#444"  HorizontalOptions="Start" />
+                        <Entry x:Name="AboutmeEntry" FontSize="15" Placeholder="Empty" Style="{DynamicResource WowonderTextEntryStyle}" HorizontalOptions="EndAndExpand"  WidthRequest="220" Margin="0,8,6,0" TextColor="#444"  ></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="7,0,0,0">
+                        <Label FontSize="16" FontAttributes="None" Margin="5,17,6,0" Text="{  languish:Translate Label_Location }" TextColor="#444" HorizontalOptions="Start"  />
+                        <Entry x:Name="LocationEntery" FontSize="15" Placeholder="Empty" Style="{DynamicResource WowonderTextEntryStyle}"  WidthRequest="220" HorizontalOptions="EndAndExpand"  Margin="0,8,6,0" TextColor="#444"  ></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="7,0,0,0">
+                        <Label FontSize="16" FontAttributes="None" Margin="5,18,6,0" Text="Facebook" TextColor="#444" HorizontalOptions="Start"  />
+                        <Entry x:Name="FacebookEntery" FontSize="15" Placeholder="Empty" Style="{DynamicResource WowonderTextEntryStyle}"  WidthRequest="220" HorizontalOptions="EndAndExpand"  Margin="0,8,6,0" TextColor="#444"  ></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="7,0,0,0">
+                        <Label FontSize="16" FontAttributes="None" Margin="5,18,6,0" Text="Google+" TextColor="#444" HorizontalOptions="Start"  />
+                        <Entry x:Name="GoogleEntery" FontSize="15" Placeholder="Empty" Style="{DynamicResource WowonderTextEntryStyle}"  WidthRequest="220" HorizontalOptions="EndAndExpand"  Margin="0,8,6,0" TextColor="#444"  ></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="7,0,0,0">
+                        <Label FontSize="16" FontAttributes="None" Margin="5,18,6,0" Text="Linkedin" TextColor="#444" HorizontalOptions="Start"  />
+                        <Entry x:Name="LinkedinEntery" FontSize="15" Placeholder="Empty" Style="{DynamicResource WowonderTextEntryStyle}"  WidthRequest="220" HorizontalOptions="EndAndExpand"  Margin="0,8,6,0" TextColor="#444"  ></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="7,0,0,0">
+                        <Label FontSize="16" FontAttributes="None" Margin="5,18,6,0" Text="Vkontakte" TextColor="#444" HorizontalOptions="Start"  />
+                        <Entry x:Name="VkEntery" FontSize="15" Placeholder="Empty" Style="{DynamicResource WowonderTextEntryStyle}"  WidthRequest="220" HorizontalOptions="EndAndExpand"  Margin="0,8,6,0" TextColor="#444"  ></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="7,0,0,0">
+                        <Label FontSize="16" FontAttributes="None" Margin="5,18,6,0" Text="Instagram" TextColor="#444" HorizontalOptions="Start"  />
+                        <Entry x:Name="InstagramEntery" FontSize="15" Placeholder="Empty" Style="{DynamicResource WowonderTextEntryStyle}"  WidthRequest="220" HorizontalOptions="EndAndExpand"  Margin="0,8,6,0" TextColor="#444"  ></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="7,0,0,0">
+                        <Label FontSize="16" FontAttributes="None" Margin="5,18,6,0" Text="Twitter" TextColor="#444" HorizontalOptions="Start"  />
+                        <Entry x:Name="TwitterEntery" FontSize="15" Placeholder="Empty" Style="{DynamicResource WowonderTextEntryStyle}"  WidthRequest="220" HorizontalOptions="EndAndExpand"  Margin="0,8,6,0" TextColor="#444"  ></Entry>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="7,0,0,0">
+                        <Label FontSize="16" FontAttributes="None" Margin="5,18,6,0" Text="Youtube" TextColor="#444" HorizontalOptions="Start"  />
+                        <Entry x:Name="YoutubeEntery" FontSize="15" Placeholder="Empty" Style="{DynamicResource WowonderTextEntryStyle}"  WidthRequest="220" HorizontalOptions="EndAndExpand"  Margin="0,8,6,0" TextColor="#444"  ></Entry>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" HeightRequest="50" TranslationY="4" Padding="25,7,25,1">
+
+                    </StackLayout>
+
+                </StackLayout>
+            </Grid>
+
+
+        </Grid>
+
+    </ScrollView>
+</ContentPage>

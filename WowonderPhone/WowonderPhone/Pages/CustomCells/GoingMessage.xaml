@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:local="clr-namespace:WowonderPhone.Controls;assembly=WowonderPhone"
+
+             x:Class="WowonderPhone.Pages.CustomCells.GoingMessage">
+    <ViewCell.ContextActions>
+        <MenuItem Clicked="Share" CommandParameter="{Binding Content}"
+                 Text="Share" IsDestructive="True" />
+        <MenuItem Clicked="Copy" CommandParameter="{Binding Content}"
+                 Text="Copy" IsDestructive="True" />
+    </ViewCell.ContextActions>
+    <Grid ColumnSpacing="2" Padding="4" HorizontalOptions="EndAndExpand">
+ <Grid.ColumnDefinitions>
+     <ColumnDefinition Width="*"></ColumnDefinition>
+    <ColumnDefinition Width="Auto"></ColumnDefinition>
+     <ColumnDefinition Width="Auto"></ColumnDefinition>
+      <ColumnDefinition Width="35"></ColumnDefinition>
+ 
+        </Grid.ColumnDefinitions>
+  <Grid.RowDefinitions>
+    <RowDefinition  Height="Auto"></RowDefinition>
+    <RowDefinition  Height="*"  ></RowDefinition>
+    <RowDefinition Height="Auto"></RowDefinition>
+
+  </Grid.RowDefinitions>
+    
+    <!--<Image Source="{Binding UserImage}"  Grid.Row="0"
+                      Grid.Column="2" HeightRequest="35"
+                      WidthRequest="35"  HorizontalOptions="Center"  VerticalOptions="Center"  Aspect="AspectFill"  />-->
+    
+<!--<abstractions:CircleImage
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HeightRequest="36"
+                    WidthRequest="36"
+                    BorderThickness="2"
+                    BorderColor="#A84849"
+                    Aspect="AspectFill"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" Source="{Binding UserImage}"/>-->
+        <Label
+            Grid.Row="0" 
+            Grid.Column="3"
+            TranslationX="0"
+            HorizontalTextAlignment="Start"
+            VerticalTextAlignment="Start"
+            Text="{ x:Static local:WowonderShapesFont.BoldArrowRight }"
+            TextColor="{Binding GoingBackroundBoxColor}" 
+            Style="{StaticResource WowondershapesFontIcon}" 
+            FontSize="34"/>
+
+        <Frame Grid.Row="0" TranslationX="17"  Grid.Column="2" OutlineColor="Transparent" HasShadow="False"  Padding="9,6,9,5" BackgroundColor="{Binding GoingBackroundBoxColor}">
+  <Label  FontSize="15"   TextColor="White" HorizontalTextAlignment="End" Text="{Binding Content}" />
+</Frame>
+<Label x:Name="Text" FontSize="Micro" HorizontalTextAlignment="Start" HorizontalOptions="Start"  Grid.Row="1" Grid.Column="2" TranslationX="17" Text="{Binding CreatedAt}" TextColor="Gray"></Label>  
+</Grid>
+
+
+
+
+
+
+
+</ViewCell>

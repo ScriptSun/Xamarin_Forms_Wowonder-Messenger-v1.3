@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             x:Class="WowonderPhone.Pages.CustomCells.UsersImageGrid">
+
+  <StackLayout Padding="16,0,16,0">
+    <forms:CachedImage  Aspect="Fill" HeightRequest="{Binding ThumbnailHeight}"  WidthRequest="39" FadeAnimationEnabled="True" LoadingPlaceholder="Noprofile.png"   DownsampleToViewSize="true" Source="{Binding profile_picture}">
+      <forms:CachedImage.Transformations>
+        <transformations:CircleTransformation />
+      </forms:CachedImage.Transformations>
+    </forms:CachedImage>
+
+    <StackLayout Padding="0,2,0,2" HorizontalOptions="Center" Orientation="Horizontal">
+      <Label
+         Text="{Binding Name}"
+         FontSize ="11"
+         HorizontalTextAlignment="Center"
+         FontAttributes="Bold"
+         HorizontalOptions="Fill"
+         TextColor="White"/>
+
+      <Label
+       Text=""
+       FontSize ="11"
+       IsVisible="True"
+       Margin="2,2,0,0"
+       HorizontalTextAlignment="End"
+       TextColor="White"
+       >
+        <Label.FormattedText>
+          <FormattedString>
+            <FormattedString.Spans>
+              <Span Text="&#xf055;"	FontSize="10" ForegroundColor="Orange" FontFamily="{x:Static shared:FontAwesome.FontName}"/>
+            </FormattedString.Spans>
+          </FormattedString>
+        </Label.FormattedText>
+      </Label>
+
+
+
+
+      <!--<Label
+        Text="{Binding Name}"
+        FontSize ="16"
+        FontAttributes="Bold"
+        HorizontalOptions="Fill"
+        TextColor="{StaticResource AccentColor}"
+			/>
+
+      <Label
+        Text="{Binding Price}"
+        FontAttributes="Bold"
+        FontSize ="14"
+        HorizontalOptions="Fill"
+			/>-->
+    </StackLayout>
+  </StackLayout>
+</ContentView>

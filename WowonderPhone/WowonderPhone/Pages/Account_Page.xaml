@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+              xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.Timeline_Pages.SettingsNavPages.Account_Page"  Title="{languish:Translate Label_Account}">
+  <ScrollView>
+            <Grid BackgroundColor="#F5F5F5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,5,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition  Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                        <TableView Intent="Settings"  HasUnevenRows="True" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" >
+                <TableRoot>
+                    <TableSection Title="{languish:Translate Label_General_Settings} " >
+                        <ViewCell x:Name="General" Height="245"  >
+                            <StackLayout Orientation="Vertical" Margin="5,0,0,0">
+                                <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                    <Label x:Name="UsernameLabel" FontSize="16" FontAttributes="None" Margin="5,18,6,0" Text="{languish:Translate Label_Username}" TextColor="Black" />
+                                    <Entry x:Name="UsernameEntry"  Keyboard="Default" Style="{DynamicResource WowonderTextEntryStyle}" FontSize="15" Placeholder="Empty"  Margin="5,8,6,0" HorizontalOptions="EndAndExpand" WidthRequest="220"  PlaceholderColor="#444" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                    <Label x:Name="EmailLabel" FontSize="16" FontAttributes="None" Margin="5,18,6,0" Text="{languish:Translate Label_Email}" TextColor="Black" />
+                                    <Entry x:Name="EmailEntry" FontSize="15" Placeholder="Empty" Style="{DynamicResource WowonderTextEntryStyle}" Margin="34,8,6,0" TextColor="#444" HorizontalOptions="EndAndExpand" WidthRequest="220" ></Entry>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                    <Label x:Name="Phone" FontSize="16" FontAttributes="None" Margin="5,18,6,0" Text="{languish:Translate Label_Phone}" TextColor="Black" />
+                                    <Entry x:Name="PhoneEntry" FontSize="15" Placeholder="Empty" Style="{DynamicResource WowonderTextEntryStyle}" Margin="34,8,6,0" TextColor="#444" HorizontalOptions="EndAndExpand" WidthRequest="220" ></Entry>
+                                </StackLayout>
+                               <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                    <Label x:Name="Gender" IsVisible="false" FontSize="16" FontAttributes="None" HorizontalOptions="Start" Margin="5,15,6,0" Text="{languish:Translate Label_SearchByGender}" TextColor="Black" />
+
+                                    <StackLayout Orientation="Horizontal" TranslationX="-18" TranslationY="3" HorizontalOptions="CenterAndExpand">
+                                        <controls:CheckBox x:Name="Male" CheckedChanged="Male_OnCheckedChanged" CheckedText="{languish:Translate Label_Male}" DefaultText="Male"  TranslationY="6" TranslationX="0" TextColor="Black"/>
+                                        <controls:CheckBox x:Name="Female" CheckedChanged="Female_OnCheckedChanged" CheckedText="{languish:Translate Label_Female}"  DefaultText="Female" TranslationY="6" TranslationX="18" TextColor="Black" />
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="{languish:Translate Label_Password_Settings}" >
+                        <ViewCell Height="225"  >
+                            <StackLayout Orientation="Vertical" Margin="5,0,0,0">
+                                <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                    <Label x:Name="CurrentPassword" FontSize="16" FontAttributes="None" Margin="5,17,6,0" Text="{languish:Translate Label_CurrentPassword}" TextColor="Black" />
+                                    <Entry x:Name="CurrentPasswordEntry" FontSize="15" Placeholder="Empty" Style="{DynamicResource WowonderTextEntryStyle}" Margin="3,8,6,0" TextColor="#444" HorizontalOptions="EndAndExpand" WidthRequest="170" IsPassword="True" ></Entry>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                    <Label x:Name="NewPassword" FontSize="16" FontAttributes="None" Margin="5,17,6,0" Text="{languish:Translate Label_NewPassword}" TextColor="Black" />
+                                    <Entry x:Name="NewpasswordEntry" FontSize="15" Style="{DynamicResource WowonderTextEntryStyle}" Placeholder="Empty" Margin="27,8,6,0" HorizontalOptions="EndAndExpand" TextColor="#444" WidthRequest="170" IsPassword="True" ></Entry>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                    <Label  x:Name="RepeatPassword" FontSize="16" FontAttributes="None" Margin="5,17,6,0" Text="{languish:Translate Label_RepeatPassword}" TextColor="Black" />
+                                    <Entry x:Name="RepeatPasswordEntry" FontSize="15" Style="{DynamicResource WowonderTextEntryStyle}" Placeholder="Empty" Margin="7,8,6,0"  HorizontalOptions="EndAndExpand" TextColor="#444" WidthRequest="170" IsPassword="True" ></Entry>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End" BackgroundColor="White" Margin="0,7,5,0">
+                                    <controls:ImageButton x:Name="Save" Text="Save" Clicked="Save_OnClicked" HeightRequest="38"  WidthRequest="320"  TextColor="White" BackgroundColor="#A84849"  Orientation="ImageToLeft"></controls:ImageButton>
+                                </StackLayout>
+                            </StackLayout>
+                            
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+           
+        </Grid>
+       
+
+    </ScrollView>
+</ContentPage>

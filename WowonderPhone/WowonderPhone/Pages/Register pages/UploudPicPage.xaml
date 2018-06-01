@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+              xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             xmlns:local="clr-namespace:WowonderPhone;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.Register_pages.UploudPicPage" BackgroundColor="White" Title="Select Profile Picture" Disappearing="UploudPicPage_OnDisappearing">
+  <ContentPage.ToolbarItems>
+    <!--<ToolbarItem x:Name="NextButton" Text="Next" Order="Primary"  Clicked="NextButton_OnClicked" />-->
+    <ToolbarItem x:Name="ss" Text="Upload Avatar" Order="Secondary" Clicked="Ss_OnClicked"/>
+  </ContentPage.ToolbarItems>
+
+
+
+  <!--GRID WRAPPER-->
+    <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="layeringGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--SOCIAL HEADER-->
+        <Grid Grid.Row="0"
+      BackgroundColor="#44"
+      Padding="0" VerticalOptions="FillAndExpand">
+
+            <!--BACKGROUND IMAGE-->
+            <forms:CachedImage x:Name="BackImage"  Source="UploadAvater.jpg" Aspect="AspectFill"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  BitmapOptimizations="True"   >
+                <forms:CachedImage.Transformations>
+                    <transformations:BlurredTransformation Radius="19"  />
+                    <transformations:TintTransformation  HexColor="#FF212121"  />
+                </forms:CachedImage.Transformations>
+            </forms:CachedImage>
+
+            <shared:CircleImage x:Name="ProfilePicture"  BorderColor="White" VerticalOptions="Start"  TranslationY="40" Aspect="AspectFill" Source="UploadAvater.jpg" WidthRequest="250" HeightRequest="250"/>
+
+            <StackLayout Orientation="Vertical" VerticalOptions="Center" TranslationY="20" Spacing="5" Padding="0,30,0,0">
+                <StackLayout Padding="0,50,0,15" TranslationY="0">
+                    <Label x:Name="Label1" TextColor="White" Text="{languish:Translate Label_Add_a_Photo }" HorizontalTextAlignment="Center" FontSize="27"/>
+                    <Label x:Name="Label2" TextColor="White" Text="{languish:Translate Label_Show_your_unique }" Margin="0,8,0,0" HorizontalTextAlignment="Center" FontSize="16"/>
+                    <StackLayout x:Name="LoadingPanel" VerticalOptions="Start" Margin="10,10,10,0" IsVisible="True"  >
+                        <ActivityIndicator x:Name="Loaderspinner" Color="#a84849" IsRunning="true" IsVisible="False"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout x:Name="ButtonStack" VerticalOptions="End" TranslationY="0" IsVisible="True" Padding="26,0,26,4" >
+                <controls:ExtendedButton
+          IsVisible="True"
+          TranslationY="-5"
+          x:Name="NextButton"
+          Clicked="NextButtonClicked"
+          Style="{DynamicResource PrimaryActionButtonStyle}"
+          Text="{ languish:Translate Label_Next }"
+          VerticalOptions="End"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

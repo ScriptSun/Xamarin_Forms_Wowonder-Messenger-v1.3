@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WowonderPhone.App"
+             xmlns:mark="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:converters="clr-namespace:WowonderPhone;assembly=WowonderPhone"
+	xmlns:local="clr-namespace:WowonderPhone.Controls;assembly=WowonderPhone">
+  <Application.Resources>
+
+    <ResourceDictionary>
+
+      <!-- 
+				EXPORTED COLORS
+				Everytime you change any of the exported colors
+				you MUST compile (Right click on "Colors.tt" > Tools > Process T4 Templates)
+				to see your changes on your App
+			-->
+
+      <!-- Export AccentColor -->
+      <Color x:Key="AccentColor">#a84849</Color>
+      <!-- Export InverseTextColor -->
+      <Color x:Key="InverseTextColor">White</Color>
+
+      <!-- COLORS -->
+      <Color x:Key="BrandColor">#ad1457</Color>
+      <Color x:Key="BrandColorLight">#ec407a</Color>
+      <Color x:Key="BrandColorLighter">#f06292</Color>
+      <Color x:Key="BrandColorDark">#c2185b</Color>
+      <Color x:Key="BrandColorDarker">#ad1457</Color>
+
+      <!-- COMPLEMENT COLORS -->
+      <Color x:Key="ComplementColor">#384f63</Color>
+      <Color x:Key="ComplementColorDark">#272f36</Color>
+      <Color x:Key="ComplementColorDarker">#1f252a</Color>
+      <Color x:Key="TranslucidBlack">#44000000</Color>
+      <Color x:Key="TranslucidWhite">#22ffffff</Color>
+      <Color x:Key="TranslucidGrey">#BBBBBB</Color>
+      <Color x:Key="TranslucidChatBox">#EFEFF4</Color>
+
+         <!-- INDICATOR COLORS -->
+      <Color x:Key="OkColor">#22c064</Color>
+      <Color x:Key="ErrorColor">Red</Color>
+      <Color x:Key="WarningColor">#ffc107</Color>
+
+
+      <Color x:Key="SecondaryColor">#54B9ED</Color>
+      <Color x:Key="FacebookColor">#3e549c</Color>
+      <Color x:Key="ComplentColor">#FF009966</Color>
+
+      <Color x:Key="SaveButtonColor">#22c064</Color>
+      <Color x:Key="DeleteButtonColor">#D50000</Color>
+
+      <Color x:Key="LabelButtonColor">#ffffff</Color>
+
+      <Color x:Key="PlaceholderColor">#22ffffff</Color>
+      <Color x:Key="PlaceholderColorEntry">#ffffff</Color>
+      <Color x:Key="MainMenuBackgroundColor">#283441</Color>
+      <Color x:Key="MainMenuSeparatorColor">#253642</Color>
+      <Color x:Key="ListViewSeparatorColor">#77CCCCCC</Color>
+      <Color x:Key="LightBorderColor">#FFF</Color>
+
+      <Color x:Key="WalkthroughStepBackgroundColor1">#1CBCB4</Color>
+      <Color x:Key="WalkthroughStepIconColor1">#FFF</Color>
+
+      <Color x:Key="ArtinaEntryBorderBotomColor">#2C2F35</Color>
+
+
+      <Color x:Key="ListViewItemTextColor">#FF212121</Color>
+
+
+
+      <!-- BASE COLORS AND UNITS VALUES -->
+      <Color x:Key="BaseTextColor" >#37474f</Color>
+      <x:Double x:Key="BaseFontSize">16</x:Double>
+      <x:Double x:Key="BaseButtonHeight">44</x:Double>
+      <x:Double x:Key="BaseButtonBorderRadius">22</x:Double>
+
+      <x:Double x:Key="MainMenuLabelFontsize">18</x:Double>
+      <x:Double x:Key="MainMenuIconFontsize">20</x:Double>
+      <x:Double x:Key="MainMenuHeaderFontsize">18</x:Double>
+      <x:Double x:Key="MainMenuLabelTranslationX">10</x:Double>
+      <x:Double x:Key="MainMenuChevronRightFontsize">24</x:Double>
+      <x:Double x:Key="MainMenuIconWidthRequest">22</x:Double>
+
+
+      <!-- STATIC IMAGES -->
+      <FileImageSource x:Key="HamburguerIcon" File="hamburguer_icon.png" />
+      <FileImageSource x:Key="WelcomeBackgroundImage" File="welcome_bg.jpg" />
+      <FileImageSource x:Key="BrandImage" File="logo.png" />
+      <FileImageSource x:Key="LoginBackgroundImage" File="signup_bg.jpg" />
+      <FileImageSource x:Key="SignUpBackgroundImage" File="signup_bg.jpg" />
+      <FileImageSource x:Key="PasswordRecoveryBackgroundImage" File="signup_bg.jpg" />
+      <FileImageSource x:Key="WalkthroughStepBackgroundImage0" File="walkthrough_bg_0.png" />
+      <FileImageSource x:Key="WalkthroughStepBackgroundImage1" File="walkthrough_bg_1.png" />
+      <FileImageSource x:Key="WalkthroughStepBackgroundImage2" File="walkthrough_bg_2.png" />
+      <FileImageSource x:Key="WalkthroughStepGenericPhoneBackgroundImage" File="walkthrough_generic_phone_bg" />
+      <FileImageSource x:Key="ThemeAvatarSample0Image" File="user_profile_0.jpg" />
+      <FileImageSource x:Key="ThemeAvatarSample1Image" File="user_profile_1.jpg" />
+      <FileImageSource x:Key="SocialHeaderBackgroundImage0" File="social_header_bg_0.jpg" />
+      <FileImageSource x:Key="SocialHeaderBackgroundImage1" File="social_header_bg_1.jpg" />
+
+
+      <!-- IMPLICIT STYLES -->
+      <Style TargetType="Frame">
+        <Setter Property="OutlineColor" Value="{StaticResource BrandColor}" />
+      </Style>
+
+      <Style TargetType="Entry">
+        <Setter Property="TextColor" Value="{StaticResource BaseTextColor}" />
+      </Style>
+
+      <Style TargetType="ActivityIndicator">
+        <Setter Property="Color" Value="{StaticResource AccentColor}" />
+      </Style>
+
+      <Style TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="White" />
+      </Style>
+
+      <Style TargetType="ContentView">
+        <Setter Property="BackgroundColor" Value="White" />
+      </Style>
+
+      <Style TargetType="ScrollView">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+      </Style>
+
+      <Style TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
+        <Setter Property="TextColor" Value="{StaticResource BaseTextColor}" />
+      </Style>
+
+      <Style TargetType="ListView">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="SeparatorColor" Value="{StaticResource ListViewSeparatorColor}" />
+        <Setter Property="SeparatorVisibility" Value="Default" />
+      </Style>
+
+      <Style TargetType="TableView">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="artina:TableViewProperties.HeaderFooterTextColor" Value="{StaticResource AccentColor}"/>
+      </Style>
+
+      <x:String x:Key="GrialShapesFontFamily">grialshapes</x:String>
+      
+      <Style x:Key="FontIconBase" TargetType="Label">
+        <Setter Property="FontFamily" Value="{x:Static artina:FontAwesome.FontName}" />
+      </Style>
+      <Style x:Key="RoundShape" TargetType="Label" BasedOn="{ StaticResource FontIconBase }">
+        <Setter Property="Text" Value="{ x:Static local:WowonderShapesFont.Circle }" />
+      </Style>
+
+      <Style TargetType="ProgressBar">
+        <Setter Property="artina:ProgressBarProperties.TintColor" Value="{StaticResource AccentColor}"/>
+      </Style>
+
+      <Style TargetType="Slider">
+        <Setter Property="artina:SliderProperties.TintColor" Value="{StaticResource AccentColor}"/>
+      </Style>
+
+
+      <Style TargetType="TextCell">
+        <Setter Property="TextColor" Value="{ StaticResource AccentColor }" />
+      </Style>
+
+      <Style TargetType="Button">
+        <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
+        <Setter Property="BorderRadius" Value="22" />
+        <Setter Property="BorderWidth"	Value="2" />
+        <Setter Property="BorderColor"	Value="Transparent" />
+        <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}"/>
+
+        <!-- 
+				Mimic Android Buttons background color 
+				If no background color is set, 
+				the button won't render with height as specified here
+				-->
+        <!--<Setter Property="BackgroundColor">
+          <Setter.Value>
+            <OnPlatform x:TypeArguments="Color" Android="#d6d6d6" />
+          </Setter.Value>
+        </Setter>-->
+
+      </Style>
+
+      <Style TargetType="artina:Button">
+        <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
+        <Setter Property="BorderRadius" Value="22" />
+        <Setter Property="BorderWidth"	Value="2" />
+        <Setter Property="BorderColor"	Value="Transparent" />
+        <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}"/>
+
+        <!-- 
+				Mimic Android Buttons background color 
+				If no background color is set, 
+				the button won't render with height as specified here
+				-->
+        <!--<Setter Property="BackgroundColor">
+          <Setter.Value>
+            <OnPlatform x:TypeArguments="Color" Android="#d6d6d6" />
+          </Setter.Value>
+        </Setter>-->
+      </Style>
+
+      <!-- BASE STYLES -->
+      <Style x:Key="FontIcon" TargetType="Label">
+        <Setter Property="FontFamily" Value="{x:Static artina:FontAwesome.FontName}" />
+
+      </Style>
+      
+      <Style x:Key="IoniconsFontIcon" TargetType="Label">
+       <Setter Property="FontFamily" Value="Ionicons" />
+       <!--<Setter Property="TextColor" Value="{StaticResource AccentColor}"/>-->
+      </Style>
+      
+      <Style x:Key="WowondershapesFontIcon" TargetType="Label">
+        <Setter Property="FontFamily" Value="grialshapes" />
+      </Style>
+      
+      <Style x:Key="DefaultFontColor" TargetType="Label">
+        <Setter Property="FontFamily" Value="{x:Static artina:FontAwesome.FontName}" />
+        <Setter Property="TextColor" Value="{ x:Static converters:Settings.MainColor }"/>
+      </Style>
+
+      <Style x:Key="RoundedButtonStyle" TargetType="Button">
+        <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
+        <Setter Property="BorderRadius" Value="22" />
+        <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}"/>
+      </Style>
+
+      <Style x:Key="Horizontal1ptLineStyle" TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="1"/>
+        <Setter Property="BackgroundColor" Value="#eee" />
+      </Style>
+
+      <Style x:Key="StatusLabelStyle" TargetType="Label" >
+        <Setter Property="Text" Value=" AVAILABLE " />
+        <Setter Property="VerticalOptions" Value="End" />
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="FontSize" Value="14"/>
+      </Style>
+
+      <!-- SPECIFIC STYLES -->
+      <Style x:Key="IconCloseLabelStyle" TargetType="Label" BasedOn="{StaticResource FontIcon}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="Text" Value="&#xf00d;"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="HeightRequest" Value="30"/>
+        <Setter Property="WidthRequest" Value="30"/>
+      </Style>
+
+      <Style x:Key="IconBackLabelStyle" TargetType="Label" BasedOn="{StaticResource IconCloseLabelStyle}">
+        <Setter Property="Text" Value="&#xf104;"/>
+      </Style>
+
+      <!-- COMMON -->
+      <Style x:Key="AvailableStatusStyle" TargetType="Label" BasedOn="{StaticResource StatusLabelStyle}">
+        <Setter Property="BackgroundColor" Value="{StaticResource OkColor}"/>
+        <Setter Property="TextColor" Value="White"/>
+      </Style>
+
+      <!-- MAIN MENU STYLES -->
+      <Style x:Key="MainMenuStyle" TargetType="ContentPage" >
+        <Setter Property="BackgroundColor" Value="{StaticResource MainMenuBackgroundColor}"/>
+      </Style>
+
+      <Style x:Key="MainMenuListViewStyle" TargetType="ListView">
+        <Setter Property="BackgroundColor" Value="{StaticResource MainMenuBackgroundColor}"/>
+        <Setter Property="SeparatorVisibility" Value="Default" />
+        <Setter Property="SeparatorColor" Value="{StaticResource MainMenuSeparatorColor}" />
+        <Setter Property="RowHeight" Value="44"/>
+      </Style>
+
+      <Style x:Key="MainMenuIconStyle" TargetType="Label" >
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontFamily" Value="{x:Static artina:FontAwesome.FontName}" />
+        <Setter Property="FontSize" Value="{StaticResource MainMenuIconFontsize }"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+      </Style>
+
+      <Style x:Key="MainMenuHeaderStyle" TargetType="Label" >
+        <Setter Property="BackgroundColor" Value="{StaticResource MainMenuBackgroundColor}"/>
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="{StaticResource MainMenuHeaderFontsize }"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+      </Style>
+
+      <Style x:Key="MainMenu_Label_Style" TargetType="Label" >
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="TranslationX" Value="{StaticResource MainMenuLabelTranslationX}"/>
+        <Setter Property="FontSize" Value="{StaticResource MainMenuLabelFontsize}"/>
+        <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+      </Style>
+
+      <Style x:Key="MainMenu_Right_Chevron_Style" TargetType="Label" BasedOn="{StaticResource FontIcon}">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="{StaticResource MainMenuChevronRightFontsize}"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+      </Style>
+
+
+      <!-- LOGINS STYLES -->
+      <Style x:Key="PrimaryActionButtonStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+        <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"/>
+        <Setter Property="TextColor" Value="{StaticResource LabelButtonColor}"/>
+        <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}"/>
+      </Style>
+
+      <Style x:Key="SecondaryActionButtonStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+        <Setter Property="BackgroundColor" Value="{StaticResource ComplementColor}"/>
+        <Setter Property="TextColor" Value="{StaticResource LabelButtonColor}"/>
+        <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}"/>
+      </Style>
+
+      <Style x:Key="TransparentButtonStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="{StaticResource LabelButtonColor}"/>
+        <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}"/>
+      </Style>
+      <Style x:Key="TransparentButtonwhiteStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+        <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"/>
+        <Setter Property="TextColor" Value="{StaticResource LabelButtonColor}"/>
+        <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}"/>
+        <Setter Property="BorderColor" Value="White"/>
+      </Style>
+      <Style x:Key="WhiteButtonStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+        <Setter Property="BackgroundColor" Value="White"/>
+        <Setter Property="TextColor" Value="{StaticResource AccentColor}"/>
+        <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}"/>
+
+      </Style>
+      <Style x:Key="PurpuleActionButtonStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+        <Setter Property="BackgroundColor" Value="#6a7ae5"/>
+        <Setter Property="TextColor" Value="{StaticResource LabelButtonColor}"/>
+        <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}"/>
+      </Style>
+
+      <Style x:Key="RedActionButtonStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+        <Setter Property="BackgroundColor" Value="#DF7169"/>
+        <Setter Property="TextColor" Value="{StaticResource LabelButtonColor}"/>
+        <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}"/>
+      </Style>
+      <!-- ENTRY FIELDS -->
+      <Style x:Key="ArtinaEntryStyle" TargetType="Entry">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="artina:EntryProperties.BorderStyle" Value="BottomLine"/>
+        <Setter Property="artina:EntryProperties.BorderWidth" Value="1"/>
+        <Style.Triggers>
+          <Trigger TargetType="Entry"
+						Property="IsFocused" Value="True">
+            <Setter Property="artina:EntryProperties.BorderColor" Value="{StaticResource AccentColor}" />
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+
+      <Style x:Key="LoginEntryStyle" TargetType="Entry">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+      </Style>
+
+      <Style x:Key="WowonderEntryStyle" TargetType="Entry">
+        <Setter Property="TextColor" Value="#444" />
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+      </Style>
+
+      <Style x:Key="ArtinaLoginEntryStyle" TargetType="Entry" BasedOn="{ StaticResource LoginEntryStyle }" >
+        <Setter Property="artina:EntryProperties.BorderStyle" Value="BottomLine"/>
+        <Setter Property="artina:EntryProperties.BorderColor" Value="{ StaticResource TranslucidWhite }"/>
+        <Setter Property="artina:EntryProperties.PlaceholderColor" Value="{ StaticResource PlaceholderColorEntry }"/>
+        <Style.Triggers>
+          <Trigger TargetType="Entry"
+						Property="IsFocused" Value="True">
+            <Setter Property="artina:EntryProperties.BorderColor" Value="{ StaticResource AccentColor }" />
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+        
+        
+
+      <Style x:Key="WowonderTextEntryStyle" TargetType="Entry" BasedOn="{ StaticResource WowonderEntryStyle }" >
+        <Setter Property="artina:EntryProperties.BorderStyle" Value="BottomLine"/>
+        <Setter Property="artina:EntryProperties.BorderColor" Value="{ StaticResource TranslucidChatBox }"/>
+          <Setter Property="artina:EntryProperties.PlaceholderColor" Value="#828282"/>
+        <Style.Triggers>
+          <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+             <Setter Property="artina:EntryProperties.BorderColor" Value="{ StaticResource TranslucidChatBox }" />
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+
+
+
+      <!-- VALIDATIONS -->
+      <Style x:Key="ValidationEntryErrorStyle" TargetType="Label" >
+        <Setter Property="BackgroundColor" Value="{ StaticResource AccentColor }" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="12" />
+      </Style>
+
+      <Style x:Key="ValidationEntryWarningStyle" TargetType="Label" >
+        <Setter Property="BackgroundColor" Value="{ StaticResource WarningColor }" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="12" />
+      </Style>
+
+
+      <!-- WALKTHROUGH -->
+      <Style x:Key="WalkthroughStepBaseStyle" TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="{StaticResource BrandColor}"/>
+      </Style>
+
+      <Style x:Key="WalkthroughStepStyle" TargetType="ContentPage" BasedOn="{StaticResource WalkthroughStepBaseStyle}">
+        <Setter Property="Opacity" Value="1"/>
+      </Style>
+
+      <Style x:Key="WalkthroughStepIconStyle" TargetType="Label" BasedOn="{StaticResource FontIcon}">
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="FontSize" Value="72"/>
+        <Setter Property="TextColor" Value="White" />
+      </Style>
+
+      <!-- SETTINGS -->
+      <Style x:Key="SaveButtonStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+        <Setter Property="BackgroundColor" Value="{StaticResource SaveButtonColor}"/>
+        <Setter Property="TextColor" Value="#FFF"/>
+        <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}"/>
+      </Style>
+
+      <Style x:Key="DeleteButtonStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+        <Setter Property="BackgroundColor" Value="{StaticResource DeleteButtonColor}"/>
+        <Setter Property="TextColor" Value="#FFF"/>
+        <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}"/>
+      </Style>
+
+      <!-- SOCIAL -->
+      <Style x:Key="SocialHeaderStyle" TargetType="Label" >
+        <Setter Property="TranslationX" Value="20"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HeightRequest" Value="46" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="#FF1C1C1C"/>
+      </Style>
+
+      <Style x:Key="SocialHeaderStyleBorderBottomStyle" TargetType="Label" >
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="BackgroundColor" Value="#ffffffff"/>
+      </Style>
+
+
+      <Style x:Key="ToolbarStyle" TargetType="Grid">
+        <Setter Property="HeightRequest" Value="60"/>
+        <Setter Property="ColumnSpacing" Value="0"/>
+      </Style>
+
+      <!-- BRAND BLOCK -->
+      <Style x:Key="BrandContainerStyle" TargetType="StackLayout" >
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="VerticalOptions" Value="Start"/>
+      </Style>
+
+      <Style x:Key="BrandNameStyle" TargetType="Label" >
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="TextColor" Value="White" />
+      </Style>
+
+      <Style x:Key="BrandNameOrnamentStyle" TargetType="BoxView" >
+        <Setter Property="HeightRequest" Value="4"/>
+        <Setter Property="VerticalOptions" Value="End"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="BackgroundColor" Value="{StaticResource DeleteButtonColor}" />
+      </Style>
+
+      <!-- LAYOUT HELPERS -->
+      <Style x:Key="Spacer" TargetType="BoxView">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+      </Style>
+
+      <Style x:Key="SpacerThemeShowCaseStyle" TargetType="BoxView" BasedOn="{ StaticResource Spacer }">
+        <Setter Property="HeightRequest" Value="20"/>
+      </Style>
+
+      <Style x:Key="HorizontalRuleStyle" TargetType="BoxView">
+        <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}"/>
+        <Setter Property="HeightRequest" Value="1"/>
+      </Style>
+
+      <Style x:Key="LoginPadding" TargetType="StackLayout">
+        <Setter Property="Padding" Value="40,0,40,0"/>
+      </Style>
+
+
+      <!-- THEME -->
+      <Style TargetType="artina:CircleImage">
+        <Setter Property="WidthRequest" Value="50" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="BorderColor" Value="{StaticResource AccentColor}"/>
+      </Style>
+
+      <Style x:Key="Avatar" TargetType="artina:CircleImage" >
+        <Setter Property="WidthRequest" Value="50" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="BorderColor" Value="{StaticResource AccentColor}"/>
+      </Style>
+
+      <Style x:Key="AvatarXSmall" TargetType="artina:CircleImage" BasedOn="{ StaticResource Avatar }">
+        <Setter Property="WidthRequest" Value="36" />
+        <Setter Property="HeightRequest" Value="36" />
+        <Setter Property="BorderThickness" Value="2"/>
+      </Style>
+
+      <Style x:Key="AvatarSmall" TargetType="artina:CircleImage" BasedOn="{ StaticResource Avatar }">
+        <Setter Property="WidthRequest" Value="44" />
+        <Setter Property="HeightRequest" Value="44" />
+      </Style>
+
+      <Style x:Key="AvatarLarge" TargetType="artina:CircleImage" BasedOn="{ StaticResource Avatar }">
+        <Setter Property="WidthRequest" Value="110" />
+        <Setter Property="HeightRequest" Value="110" />
+      </Style>
+
+
+
+      <Style x:Key="FontIconItemDemo" TargetType="Label" BasedOn="{ StaticResource FontIcon }">
+        <Setter Property="TextColor" Value="{ StaticResource AccentColor }" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontFamily" Value="{ x:Static artina:FontAwesome.FontName }" />
+      </Style>
+
+
+
+      <Style x:Key="FriendGridBannerStyle" TargetType="StackLayout">
+        <Setter Property="HeightRequest" Value="75" />
+        <Setter Property="BackgroundColor" Value="#c45a5b" />
+      </Style>
+
+      <!-- CUSTOM NAVBAR -->
+      <Style x:Key="CustomNavBarStyle" TargetType="StackLayout">
+        <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
+        <!--<Setter Property="HeightRequest">
+          <Setter.Value>
+            <OnPlatform x:TypeArguments="x:Double"
+							Android="56"
+							iOS="66" />
+          </Setter.Value>
+        </Setter>-->
+      </Style>
+
+      <Style x:Key="StatusBarShimStyle" TargetType="Image">
+        <Setter Property="Source" Value="status_bar_gradient.png" />
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="Aspect" Value="Fill" />
+        <Setter Property="Opacity" Value=".7" />
+      </Style>
+
+      <!-- RESPONSIVE COMMON -->
+      <OnIdiom x:Key="MainWrapperPadding" x:TypeArguments="Thickness">
+        <OnIdiom.Phone>0</OnIdiom.Phone>
+        <OnIdiom.Tablet>100,0,100,0</OnIdiom.Tablet>
+      </OnIdiom>
+      <!-- END RESPONSIVE COMMON -->
+      
+    </ResourceDictionary>
+  </Application.Resources>
+
+
+</Application>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.PrivacyPage" Title="{languish:Translate Label_Privacy}">
+  <StackLayout Orientation="Vertical"  VerticalOptions="Start" BackgroundColor="White"  >
+    <ScrollView Orientation="Vertical"  VerticalOptions="FillAndExpand">
+    <Grid BackgroundColor="#F5F5F5" Margin="0,0,5,0" >
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition  Height="375"></RowDefinition>
+
+      </Grid.RowDefinitions>
+      
+      <Frame Grid.Row="0"  Grid.Column="0"  OutlineColor="White"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasShadow="True" Padding="1,1,1,1" BackgroundColor="White">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition  Height="*"></RowDefinition>
+          </Grid.RowDefinitions>
+          <TableView BackgroundColor="White" Intent="Settings"  HasUnevenRows="True" Grid.Row="0" Grid.Column="0" >
+            <TableRoot>
+                <TableSection Title="My Status">
+                    <SwitchCell x:Name="SwitchCellOnline" Text="Online" On="True" OnChanged="SwitchCellOnline_OnOnChanged" />
+                </TableSection>
+                <TableSection Title="{languish:Translate Label_Privacy_Settings}">
+                    
+                <ViewCell x:Name="Myprofile" Height="180"  >
+                  <StackLayout Orientation="Vertical" Margin="5,0,0,0">
+                    <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                      <Label x:Name ="FolowOrFriendLabel" FontSize="14" FontAttributes="None" Margin="5,15,6,0" Text="Who can follow me ?" TextColor="Black" />
+                      <Picker x:Name="Whocanfollowme" HorizontalOptions="End" Margin="40,6,6,0" TextColor="#444" WidthRequest="150" >
+                        <Picker.Items>
+                           <x:String>Everyone</x:String> 
+                           <x:String>People I Follow</x:String>
+                        </Picker.Items>
+                      </Picker>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                      <Label x:Name="WhoCanmessgamelabel" FontSize="14" FontAttributes="None" Margin="5,15,6,0" Text="Who can message me ?" TextColor="Black" />
+                     <Picker x:Name="WhocamessagemePicker" HorizontalOptions="End" Margin="22,6,6,0" TextColor="#444" WidthRequest="150" >
+                        <Picker.Items>
+                           <x:String>Everyone</x:String> 
+                           <x:String>People I Follow</x:String>
+                        </Picker.Items>
+                      </Picker>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                      <Label x:Name="WhoCanSeemybirthdaylabel" FontSize="14" FontAttributes="None" Margin="5,15,6,0" Text="Who can see my birthday?" TextColor="Black" />
+                     <Picker x:Name="Whocanseemybirthday"  HorizontalOptions="End" Margin="5,6,6,0" TextColor="#444" WidthRequest="150" >
+                        <Picker.Items>
+                           <x:String>Everyone</x:String> 
+                           <x:String>People I Follow</x:String>
+                           <x:String>No Body</x:String>
+                        </Picker.Items>
+                      </Picker>
+                    </StackLayout>
+
+                 </StackLayout>
+                </ViewCell>
+              </TableSection>
+            </TableRoot>
+          </TableView>
+          <StackLayout Orientation="Vertical" HorizontalOptions="Center" BackgroundColor="White" VerticalOptions="EndAndExpand"  Margin="0,0,0,10">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" BackgroundColor="White" Margin="0,5,5,0">
+              <controls:ImageButton x:Name="Save" Text="Save" Clicked="Save_OnClicked" HeightRequest="38"  WidthRequest="320"  TextColor="White" BackgroundColor="#A84849"  Orientation="ImageToLeft"></controls:ImageButton>
+            </StackLayout>
+          </StackLayout>
+        </Grid>
+      </Frame>
+    </Grid>
+    </ScrollView>
+  </StackLayout>
+</ContentPage>

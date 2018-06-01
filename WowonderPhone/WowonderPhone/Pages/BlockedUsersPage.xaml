@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.Timeline_Pages.SettingsNavPages.BlockedUsersPage">
+<ScrollView>
+    <Grid>
+        <ListView  Margin="0,6,0,0"   VerticalOptions="FillAndExpand"  ItemSelected="BlockListview_OnItemSelected"   ItemTapped="BlockListview_OnItemTapped"  IsGroupingEnabled="False"  x:Name="BlockListview"  BackgroundColor="White" HasUnevenRows='True' IsVisible="True" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Padding="2,5,2,5">
+                            <StackLayout Orientation="Horizontal">
+                                <forms:CachedImage HorizontalOptions="Start"  FadeAnimationEnabled="True" LoadingPlaceholder="ImagePlacholder.jpg" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" DownsampleToViewSize="true" Source="{Binding Image}">
+                                    <forms:CachedImage.Transformations>
+                                        <transformations:CircleTransformation />
+                                    </forms:CachedImage.Transformations>
+                                </forms:CachedImage>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label FontSize="14" TextColor="#444" FontAttributes="Bold" Text="{Binding Name}" />
+                                    <Label FontSize="12" TextColor="#888" Text="{Binding LastSeen}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="0,6,0,0" HorizontalOptions="EndAndExpand">
+                                    <controls:ImageButton x:Name="ActionButton" Clicked="ActionButton_OnClicked" CommandParameter="{Binding User_id}" BorderWidth="0"  BackgroundColor="{Binding ButtonBGColor}" TextColor="{Binding BlockTextColor}" FontSize="9"    HorizontalOptions="StartAndExpand" HeightRequest="32" WidthRequest="65" VerticalOptions="Start" Text="{Binding BlockButtonText}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <Grid x:Name="EmptyBlockedPage" BackgroundColor="White" TranslationY="8" Padding="10" IsVisible="False"   >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+               
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60*"/>
+                        <RowDefinition Height="40*"/>
+                    </Grid.RowDefinitions>
+
+
+                <!--ICON BACKGROUND-->
+                <Label
+                    Grid.Row="0"
+                    Text="&#xf111;"
+                    Style="{StaticResource DefaultFontColor}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    FontSize="250"
+                    Opacity="0.1"/>
+
+                <!--ICON BACKGROUND-->
+                <Label
+                    Grid.Row="0"
+                    Text="&#xf111;"
+                    Style="{StaticResource DefaultFontColor}"
+                    VerticalOptions="Center"
+        
+                    HorizontalOptions="Center"
+                    FontSize="180"
+                    Opacity="0.1"/>
+
+                <!--ICON-->
+                <Label
+                    Grid.Row="0"
+                    Text="&#xf05e;"
+                    Style="{StaticResource DefaultFontColor}"
+                    FontSize="90"
+                    HorizontalTextAlignment="Center"
+       
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+
+                <!--TEXT -->
+                <StackLayout
+                    Grid.Row="1"
+                    VerticalOptions="Center"
+                    Padding="50,0"
+                    Spacing="2">
+                    <Label
+                        TranslationY="-3"
+                        HorizontalTextAlignment="Center"
+                        Text="{languish:Translate Label_Blocked_List_Empty }"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        TextColor="#444"/>
+                    <Label
+                        TranslationY="3"
+                        HorizontalTextAlignment="Center"
+                        Opacity="0.8"
+                        Text=""
+                        FontSize="18"
+                        TextColor="#444"/>
+                </StackLayout>
+
+            </Grid>
+
+            
+        </Grid>
+    </Grid>
+</ScrollView>
+  
+</ContentPage>

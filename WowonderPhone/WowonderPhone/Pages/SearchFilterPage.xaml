@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="WowonderPhone.Pages.SearchFilterPage" Title="Search Filter">
+    <StackLayout Orientation="Vertical"  VerticalOptions="Start" BackgroundColor="White"  >
+        <ScrollView Orientation="Vertical"  VerticalOptions="FillAndExpand">
+            <Grid BackgroundColor="#F5F5F5" Margin="0,0,5,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition  Height="310"></RowDefinition>
+
+                </Grid.RowDefinitions>
+
+                <Frame Grid.Row="0"  Grid.Column="0"  OutlineColor="Transparent"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasShadow="True" Padding="1,1,1,1" BackgroundColor="White">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TableView Intent="Settings" BackgroundColor="White" HasUnevenRows="True" Grid.Row="0" Grid.Column="0" >
+                            <TableRoot>
+                                <TableSection x:Name="Section" Title="Search Box Settings">
+                                    <ViewCell x:Name="Myprofile" Height="180"  >
+                                        <StackLayout Orientation="Vertical" Margin="5,0,0,0">
+                                            <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                                <Label x:Name="Gender" FontSize="14" FontAttributes="None" Margin="5,15,6,0" Text="" TextColor="Black" />
+                                                <Picker x:Name="SearchBy" HorizontalOptions="EndAndExpand" Margin="40,6,6,0" TextColor="#444" WidthRequest="150" >
+                                                    
+                                                </Picker>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                                <Label x:Name="ProfileLabel" FontSize="14" FontAttributes="None" Margin="5,15,6,0" Text="Profile Picture" TextColor="Black" />
+                                                <Picker x:Name="ProfilePicture" HorizontalOptions="EndAndExpand" Margin="20,6,6,0" TextColor="#444" WidthRequest="150" >
+                                                    
+                                                </Picker>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" Margin="5,0,0,0">
+                                                <Label x:Name="StatusLabel" FontSize="14" FontAttributes="None" Margin="5,15,6,0" Text="" TextColor="Black" />
+                                                <Picker x:Name="Status"  HorizontalOptions="EndAndExpand" Margin="5,6,6,0" TextColor="#444" WidthRequest="150" >
+                                                </Picker>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </TableSection>
+                            </TableRoot>
+                        </TableView>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="EndAndExpand"  Margin="0,-3,0,10">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,-5,5,0">
+                                <controls:ImageButton x:Name="Save" Text="Save" Clicked="Save_OnClicked" HeightRequest="38"  WidthRequest="320"  TextColor="White" BackgroundColor="#A84849"  Orientation="ImageToLeft"></controls:ImageButton>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

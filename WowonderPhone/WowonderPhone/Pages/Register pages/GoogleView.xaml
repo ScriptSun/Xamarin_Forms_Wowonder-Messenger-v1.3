@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WowonderPhone.Pages.Register_pages.GoogleView" Title="Google Login">
+    <StackLayout Orientation="Vertical"  VerticalOptions="FillAndExpand"  >
+        <StackLayout BackgroundColor="#ffff"  x:Name="loadingPanel" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  IsVisible="True" >
+            <ActivityIndicator x:name="Loaderxx" Color="#a84849" Margin="0,11,0,0" IsRunning="true" IsVisible="True"/>
+            <Label TextColor="Black" Text="Loading..." Margin="0,8,0,0" HorizontalTextAlignment="Center" FontSize="16"/>
+            <Label TextColor="Black" Text="It may take few minutes it depends on your connection" Margin="0,8,0,0" HorizontalTextAlignment="Center" FontSize="16"/>
+        </StackLayout>
+
+        <Grid BackgroundColor="#ffff" VerticalOptions="FillAndExpand" TranslationY="-5" Margin="0,-1,0,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <WebView x:Name="WebView1" Navigated="WebView1_OnNavigated"  Grid.Row="1" Grid.Column="0" Source=""></WebView>
+        </Grid>
+    </StackLayout>
+</ContentPage>

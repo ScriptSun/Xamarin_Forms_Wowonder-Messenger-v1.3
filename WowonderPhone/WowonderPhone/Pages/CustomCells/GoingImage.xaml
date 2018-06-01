@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:local="clr-namespace:WowonderPhone.Controls;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.CustomCells.GoingImage">
+  <Grid ColumnSpacing="2" Padding="5">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="3*"></ColumnDefinition>
+      <ColumnDefinition Width="5*"></ColumnDefinition>
+      <ColumnDefinition Width="Auto"></ColumnDefinition>
+     <ColumnDefinition Width="0"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition  Height="5*"></RowDefinition>
+      <RowDefinition  Height="*"  ></RowDefinition>
+      <RowDefinition Height="Auto"></RowDefinition>
+
+    </Grid.RowDefinitions>
+
+    <!--<Image Source="{Binding UserImage}"  Grid.Row="0"
+                      Grid.Column="2" HeightRequest="35"
+                      WidthRequest="35"  HorizontalOptions="Center"  VerticalOptions="Center"  Aspect="AspectFill"  />-->
+
+    <!--<abstractions:CircleImage
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        HeightRequest="36"
+                        WidthRequest="36"
+                        BorderThickness="2"
+                        BorderColor="#A84849"
+                        Aspect="AspectFill"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" Source="{Binding UserImage}"/>-->
+
+        <Label
+            Grid.Row="0" 
+            Grid.Column="2"
+            TranslationX="0"
+            HorizontalTextAlignment="Start"
+            VerticalTextAlignment="Start"
+            Text="{ x:Static local:WowonderShapesFont.BoldArrowRight }"
+            TextColor="{Binding GoingBackroundBoxColor}" 
+            Style="{StaticResource WowondershapesFontIcon}" 
+            FontSize="34"/>
+
+        <Frame Grid.Row="0" Grid.Column="1" TranslationX="17" OutlineColor="Transparent" HasShadow="False" Padding="1,1,1,1"  BackgroundColor="{Binding GoingBackroundBoxColor}">
+      <Grid RowSpacing="2" Padding="-5,0,-5,0">
+      <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="0"></ColumnDefinition>
+      <ColumnDefinition Width="3*"></ColumnDefinition>
+       <ColumnDefinition Width="0"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+       <Grid.RowDefinitions>
+      <RowDefinition  Height="Auto"></RowDefinition>
+      <RowDefinition  Height="Auto"  ></RowDefinition>
+    </Grid.RowDefinitions>
+        <forms:CachedImage x:Name="CoverImage"  Aspect="AspectFill" Grid.Column="1" Margin="0,1,0,0" MinimumWidthRequest="150"  ErrorPlaceholder="UploadImage.png" LoadingPlaceholder="UploadImage.png" Source="{Binding ImageMedia}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+        </forms:CachedImage>
+
+      <Label FontSize="14"  Grid.Column="1" Grid.Row="1" IsVisible="{Binding Visibilty}" Margin="0,0,0,0" TextColor="White" HorizontalTextAlignment="Start" Text="{Binding Content}" />
+      </Grid>
+    </Frame>
+        <Label FontSize="Micro" TranslationX="17" Grid.Row="1" Grid.Column="1"  Text="{Binding CreatedAt}" TextColor="Gray"  ></Label>
+  </Grid>
+
+
+
+
+
+
+
+  </ViewCell>
+
+
+
+
+<!--<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="WowonderPhone.Pages.CustomCells.GoingImage">
+  <Grid ColumnSpacing="2" Padding="5">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"></ColumnDefinition>
+      <ColumnDefinition Width="Auto"></ColumnDefinition>
+      <ColumnDefinition Width="40"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition  Height="Auto"></RowDefinition>
+      <RowDefinition  Height="*"  ></RowDefinition>
+      <RowDefinition Height="Auto"></RowDefinition>
+
+    </Grid.RowDefinitions>
+
+    --><!--<Image Source="{Binding UserImage}"  Grid.Row="0"
+                      Grid.Column="2" HeightRequest="35"
+                      WidthRequest="35"  HorizontalOptions="Center"  VerticalOptions="Center"  Aspect="AspectFill"  />--><!--
+
+    --><!--<abstractions:CircleImage
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        HeightRequest="36"
+                        WidthRequest="36"
+                        BorderThickness="2"
+                        BorderColor="#A84849"
+                        Aspect="AspectFill"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" Source="{Binding UserImage}"/>--><!--
+
+    <Frame Grid.Row="0" Grid.Column="1" OutlineColor="Transparent" HasShadow="False" Padding="5,5,5,5"  BackgroundColor="#A84849">
+      <Label FontSize="14"  Margin="0,-12,0,0" TextColor="White" HorizontalTextAlignment="End" Text="{Binding Content}" />
+      <Image Source="{Binding ImageMedia}"  Aspect="Fill" HeightRequest="200" WidthRequest="200"  />
+    </Frame>
+    <Label FontSize="Micro" Grid.Row="1" Grid.Column="1" Text="{Binding CreatedAt}" TextColor="Gray"></Label>
+  </Grid>
+
+
+
+
+
+
+
+</ViewCell>-->

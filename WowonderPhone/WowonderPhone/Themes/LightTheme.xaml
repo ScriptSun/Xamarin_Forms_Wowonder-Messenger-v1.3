@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="WowonderPhone.Themes.LightTheme">
+
+  <!--
+	THEME COLORS
+
+	The colors below will be automatically updated on each platform project by the build task.
+
+	IMPORTANT: To avoid issues on Android please make sure your accent color is not transparent!
+	Just add "FF" inmediately after the "#" to your color.
+
+	So these are not valid (both are equivalent and means a transparent color): 
+		#169CEE
+		#00169CEE
+
+	...but this is: 
+		#FF169CEE
+	-->
+
+  <!-- Grial Theme Exported Colors -->
+  <Color x:Key="AccentColor">#FFDA125F</Color>
+  <Color x:Key="BaseTextColor">#666666</Color>
+
+
+  <!-- GENERAL COLORS -->
+  <Color x:Key="InverseTextColor">White</Color>
+  <Color x:Key="BrandColor">#ad1457</Color>
+  <Color x:Key="BrandNameColor">#FFFFFF</Color>
+  <Color x:Key="BaseLightTextColor">#7b7b7b</Color>
+  <Color x:Key="OverImageTextColor">#FFFFFF</Color>
+  <Color x:Key="EcommercePromoTextColor">#FFFFFF</Color>
+  <Color x:Key="SocialHeaderTextColor">#666666</Color>
+  <Color x:Key="ArticleHeaderBackgroundColor">#F1F3F5</Color>
+  <Color x:Key="CustomNavBarTextColor">#FFFFFF</Color>
+  <Color x:Key="ListViewItemTextColor">#666666</Color>
+  <Color x:Key="AboutHeaderBackgroundColor">#FFFFFF</Color>
+
+  <Color x:Key="BasePageColor">#FFFFFF</Color>
+  <Color x:Key="BaseTabbedPageColor">#fafafa</Color>
+
+  <Color x:Key="MainWrapperBackgroundColor">#EFEFEF</Color>
+
+  <Color x:Key="CategoriesListIconColor">#55000000</Color>
+  <Color x:Key="DashboardIconColor">#FFFFFF</Color>
+
+  <!-- COMPLEMENT COLORS -->
+  <Color x:Key="ComplementColor">#525ABB</Color>
+  <Color x:Key="TranslucidBlack">#44000000</Color>
+  <Color x:Key="TranslucidWhite">#22ffffff</Color>
+
+  <!-- INDICATOR COLORS -->
+  <Color x:Key="OkColor">#22c064</Color>
+  <Color x:Key="ErrorColor">Red</Color>
+  <Color x:Key="WarningColor">#ffc107</Color>
+  <Color x:Key="NotificationColor">#1274d1</Color>
+
+  <!-- BUTTONS & ENTRY COLORS -->
+  <Color x:Key="SaveButtonColor">#22c064</Color>
+  <Color x:Key="DeleteButtonColor">#D50000</Color>
+  <Color x:Key="LabelButtonColor">#ffffff</Color>
+
+  <Color x:Key="PlaceholderColor">#22ffffff</Color>
+  <Color x:Key="PlaceholderColorEntry">#FFFFFF</Color>
+
+  <Color x:Key="RoundedLabelBackgroundColor">#525ABB</Color>
+
+  <!-- MAIN MENU COLORS -->
+  <Color x:Key="MainMenuHeaderBackgroundColor">#384F63</Color>
+  <Color x:Key="MainMenuBackgroundColor">#F1F3F5</Color>
+  <Color x:Key="MainMenuSeparatorColor">Transparent</Color>
+  <Color x:Key="MainMenuTextColor">#666666</Color>
+  <Color x:Key="MainMenuIconColor">#666666</Color>
+
+  <!-- SEPARATORS COLORS -->
+  <Color x:Key="ListViewSeparatorColor">#D3D3D3</Color>
+  <Color x:Key="BaseSeparatorColor">#7b7b7b</Color>
+
+  <!-- CHAT COLORS -->
+  <Color x:Key="ChatRightBalloonBackgroundColor">#525ABB</Color>
+  <Color x:Key="ChatBalloonFooterTextColor">#FFFFFF</Color>
+  <Color x:Key="ChatRightTextColor">#FFFFFF</Color>
+  <Color x:Key="ChatLeftTextColor">#FFFFFF</Color>
+
+</ResourceDictionary>

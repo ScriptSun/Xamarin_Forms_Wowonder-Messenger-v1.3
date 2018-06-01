@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="WowonderPhone.Pages.CustomCells.CommingImage">
+  <Grid ColumnSpacing="2" Padding="5">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"></ColumnDefinition>
+      <ColumnDefinition Width="5*"></ColumnDefinition>
+      <ColumnDefinition Width="3*"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition  Height="36"></RowDefinition>
+      <RowDefinition  Height="5*"></RowDefinition>
+      <RowDefinition Height="12"></RowDefinition>
+
+    </Grid.RowDefinitions>
+    <!--<Image Source="{Binding UserImage}"  Grid.Row="0"
+                      Grid.Column="0" HeightRequest="35"
+                      WidthRequest="35"  HorizontalOptions="Center"  VerticalOptions="Center"  Aspect="AspectFill"  />-->
+
+        <forms:CachedImage  Grid.Row="0"
+                            Grid.Column="0"
+                            HeightRequest="36"
+                            WidthRequest="36"
+                            Aspect="AspectFill"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" LoadingPlaceholder="UserContact.png" Source="{Binding UserImage}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+            <forms:CachedImage.Transformations>
+                <transformations:CircleTransformation BorderHexColor="#A84849" BorderSize="1" />
+            </forms:CachedImage.Transformations>
+        </forms:CachedImage>
+
+        <Frame Grid.Row="1" MinimumHeightRequest="10" TranslationY="-40" Grid.Column="1"  OutlineColor="Transparent" HasShadow="False" Padding="1,1,1,1" BackgroundColor="{Binding CommingBackroundBoxColor}">
+      <Grid RowSpacing="2" Padding="-5,0,-5,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="0"></ColumnDefinition>
+          <ColumnDefinition Width="3*"></ColumnDefinition>
+          <ColumnDefinition Width="0"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition  Height="Auto"></RowDefinition>
+          <RowDefinition  Height="Auto"  ></RowDefinition>
+        </Grid.RowDefinitions>
+          <forms:CachedImage x:Name="CoverImage"  Aspect="AspectFill" Grid.Column="1" CacheDuration="10" MinimumWidthRequest="150" MinimumHeightRequest="150" ErrorPlaceholder="LoadingImage.png" LoadingPlaceholder="LoadingImage.png" Source="{Binding ImageMedia}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                   
+         </forms:CachedImage>
+                <!--<Image Source="{Binding ImageMedia}"  Aspect="AspectFill" Grid.Column="1"  MinimumWidthRequest="150" MinimumHeightRequest="150"  />-->
+        <Label TextColor="Black" Grid.Column="1" Grid.Row="1" IsVisible="{Binding Visibilty}"  Margin="0,0,0,0" Text="{Binding Content}" />
+      </Grid>
+      </Frame>
+    <Label FontSize="Micro" TranslationY="-40" Grid.Row="2" Grid.Column="1" Text="{Binding CreatedAt}" TextColor="Gray"></Label>
+  </Grid>
+  </ViewCell>

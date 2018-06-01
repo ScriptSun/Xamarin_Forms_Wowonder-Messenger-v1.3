@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            
+              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.SearchPage" Title="{ languish:Translate Label_Search_Contacts }" Disappearing="ContentPage_Disappearing">
+  <StackLayout Orientation="Vertical"  VerticalOptions="Start" >
+    
+    <Grid BackgroundColor="#F5F5F5" Margin="0,0,0,0" >
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition  Height="55"></RowDefinition>
+        <RowDefinition  Height="550"></RowDefinition>
+
+        <!--<RowDefinition  Height="65"></RowDefinition>-->
+      </Grid.RowDefinitions>
+       <Frame Grid.Row="0" Grid.Column="0" OutlineColor="White" BackgroundColor="White" Padding="5" HasShadow="False" >
+          <SearchBar x:Name="SearchBarCo" TextChanged="SearchBarCo_OnTextChanged" Margin="-7,10,0,0" HeightRequest="30" SearchButtonPressed="SearchBar_OnSearchButtonPressed" Placeholder="{ languish:Translate Label_Search }" ></SearchBar>
+       </Frame>
+    
+      <ListView Margin="0,-6,0,0"  SeparatorVisibility="None" Grid.Row="1" Grid.Column="0" x:Name="ChatContactListview"  ItemTapped="ChatContactListview_OnItemTapped" BackgroundColor="White" HasUnevenRows='True' >
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.ContextActions>
+                <MenuItem  CommandParameter="{Binding Username}"
+                   Text="Delete" IsDestructive="True" />
+              </ViewCell.ContextActions>
+              <StackLayout Orientation="Vertical" Padding="2,5,2,5">
+                <StackLayout Orientation="Horizontal">
+                  <AbsoluteLayout >
+                                        <forms:CachedImage x:Name="CoverImage" Aspect="AspectFill"   HorizontalOptions="Start" HeightRequest="50" WidthRequest="50" LoadingPlaceholder="UserContact.png"  Source="{Binding profile_picture}" FadeAnimationEnabled="True"  DownsampleToViewSize="true"  >
+                     <forms:CachedImage.Transformations>
+                     <transformations:CircleTransformation BorderHexColor="#fff" BorderSize="1" />
+                    </forms:CachedImage.Transformations>
+                   </forms:CachedImage>
+                    <!--<Image Source="{Binding profile_picture}" HorizontalOptions="Start" Aspect="Fill" HeightRequest="50" WidthRequest="50"  />-->
+                    <Grid >
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="14" />
+                        <RowDefinition Height="14" />
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="28" />
+                        <ColumnDefinition Width="14" />
+                      </Grid.ColumnDefinitions>
+                      <Image  Source="{Binding lastseen}" Grid.Row="0" Grid.Column="1" HeightRequest="5" WidthRequest="5" Aspect="Fill"/>
+                      <Image  Source="{Binding lastseen}" Grid.Row="0" Grid.Column="1" HeightRequest="5" WidthRequest="5" Aspect="Fill"/>
+                    </Grid>
+                  </AbsoluteLayout>
+                  <StackLayout HorizontalOptions="FillAndExpand">
+                    <Label FontSize="14" TextColor="#444" FontAttributes="Bold" Text="{Binding Username}" />
+                    <Label FontSize="12" TextColor="#888" Text="{Binding TextMessage}" />
+                  </StackLayout>
+                  <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                    <Label FontSize="11" TextColor="#BFBFBF" HorizontalOptions="StartAndExpand" VerticalOptions="Start" Text="{Binding LastMessageDateTime}" />
+                  </StackLayout>
+                </StackLayout>
+                <!-- <Image  Margin="5,-23,0,0"  Source="{Binding verified}" Height="12" Width="12" HorizontalOptions="End"  />-->
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+            <Label x:Name="ImageSearch" Grid.Row="1" Grid.Column="0" Margin="0,0,5,125" Text="&#xf002;" Style="{StaticResource DefaultFontColor}" FontSize="85" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Label x:Name="LabelSearch" Grid.Row="1" Grid.Column="0" IsVisible="True" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Text="{ languish:Translate Label_Please_write_your_contact_name }" TranslationY="15"></Label>
+        </Grid>
+  </StackLayout>
+</ContentPage>

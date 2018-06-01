@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:wowonderPhone="clr-namespace:WowonderPhone;assembly=WowonderPhone"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             xmlns:local1="clr-namespace:WowonderPhone.Controls;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.Register_pages.WalkThrough_Page1" Appearing="WalkThrough_Page1_OnAppearing" Disappearing="WalkThrough_Page1_OnDisappearing" BackgroundImage="Wlbg.jpg">
+  <StackLayout Orientation="Vertical"  >
+
+    <!--<forms:AnimationView
+					Margin="25"
+				    x:Name="AnimationView"
+				    Animation="Loading.json"
+				    AutoPlay="True"
+				    HeightRequest="100"
+					WidthRequest="100"
+					VerticalOptions="Center"
+				    HorizontalOptions="Center"/>-->
+
+  
+
+    <Label
+          
+           VerticalTextAlignment="Center"
+           Text="{ x:Static local1:IoniciconsFont.AndroidCheckmarkCircle } "
+           FontSize="40"
+           TextColor="White"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           Style="{StaticResource IoniconsFontIcon}"/>
+   
+    <!--<WebView x:Name="Gifplayer" BackgroundColor="#4659DF" HeightRequest="300"    HorizontalOptions="FillAndExpand"></WebView>-->
+
+    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" Padding="30,20,0,0" TranslationY="20" Margin="10,20,0,0">
+      
+     <Grid Padding="0" >
+               <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="29" />
+                  <ColumnDefinition Width="Auto" />
+               </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                  <RowDefinition Height="40" />
+                  <RowDefinition Height="40" />
+                 <RowDefinition Height="40" />
+             </Grid.RowDefinitions>
+                 <Label Grid.Column="0" Grid.Row="0" HorizontalOptions="Start"  x:Name="Spanchek1" FontSize="23" Text="&#xf10c;" Style="{StaticResource FontIcon}" FontFamily="{x:Static shared:FontAwesome.FontName}" TextColor="White"   Margin="5,15,0,0"/>
+                 <Label Grid.Column="1" Grid.Row="0"  x:Name="Span1" HorizontalOptions="Start" FontSize="16" FontAttributes="None" Margin="8,15,6,0" Text="Loading User Contacts" TextColor="White" />
+                 <Label Grid.Column="0" Grid.Row="1" HorizontalOptions="Start"  x:Name="Spanchek2" FontSize="23" Text="&#xf10c;" Style="{StaticResource FontIcon}" FontFamily="{x:Static shared:FontAwesome.FontName}" TextColor="White"   Margin="5,15,0,0"/>
+                 <Label Grid.Column="1" Grid.Row="1" HorizontalOptions="Start" x:Name="Span2" FontSize="16" FontAttributes="None" Margin="8,15,6,0" Text="User Data" TextColor="White" />
+                 <Label Grid.Column="0" Grid.Row="2" HorizontalOptions="Start" x:Name="Spanchek3" FontSize="23" Text="&#xf10c;" Style="{StaticResource FontIcon}" FontFamily="{x:Static shared:FontAwesome.FontName}" TextColor="White"   Margin="5,15,0,0"/>
+                 <Label Grid.Column="1" Grid.Row="2" x:Name="Span3"  HorizontalOptions="Start" FontSize="16" FontAttributes="None" Margin="8,15,6,0" Text="User Settings and Privacy" TextColor="White" />
+    </Grid>
+    </StackLayout>
+
+  <StackLayout VerticalOptions="EndAndExpand" x:Name="ButtonStack"   TranslationY="-6" IsVisible="True" Padding="24,10,24,4" >
+      <controls:ExtendedButton
+        IsVisible="True"
+        x:Name="NextButton"
+        Clicked="NextButtonClicked"
+        Style="{DynamicResource PurpuleActionButtonStyle}"
+        Text="{ languish:Translate Label_Please_Wait }"
+        VerticalOptions="End"/>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

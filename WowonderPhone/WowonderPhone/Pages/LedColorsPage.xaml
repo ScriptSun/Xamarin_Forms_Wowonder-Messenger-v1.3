@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:local="clr-namespace:WowonderPhone;assembly=WowonderPhone"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.Timeline_Pages.SettingsNavPages.LedColorsPage" Disappearing="LedColorsPage_OnDisappearing" Title="{languish:Translate Label_Choose_Your_Led_Color }">
+  <StackLayout Orientation="Vertical" Padding="3,0,5,3" VerticalOptions="FillAndExpand" BackgroundColor="White" >
+    <ListView x:Name="LedList"  IsVisible="True" VerticalOptions="FillAndExpand"  ItemSelected="LedList_OnItemSelected" ItemTapped="LedList_OnItemTapped" SeparatorVisibility="Default" SeparatorColor="WhiteSmoke" HasUnevenRows="True" BackgroundColor="White" >
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell Height="50" >
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+              <Label FontSize="16" FontAttributes="None" HorizontalOptions="Start" Margin="10,15,6,0" Text="{Binding ColorText}" TextColor="Black" />
+              <Label x:Name="Checkbutton" FontSize="25" HorizontalOptions="EndAndExpand" Text="{Binding Checkicon}" Style="{StaticResource FontIcon}" FontFamily="{x:Static shared:FontAwesome.FontName}" TextColor="{Binding CheckiconColor}" TranslationX="-9"  Margin="5,15,0,0"/>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WowonderPhone.Pages.CustomCells.Vip_Styles.StarMember">
+  <ContentView.Content>
+    <Grid>
+      <Label
+        Text="&#xf111;" Style="{StaticResource FontIcon}"
+        IsVisible="{ Binding ShowBackgroundColor }"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        Opacity="1"
+        FontSize="30"
+        TextColor="#4C7737"
+		/>
+
+      <Label
+        Text="&#xf005;"
+        FontSize="13"
+        Style="{ StaticResource FontIcon }"
+        HorizontalTextAlignment="Center"
+        VerticalTextAlignment="Center"
+        TextColor="White"
+		/>
+    </Grid>
+  </ContentView.Content>
+</ContentView>

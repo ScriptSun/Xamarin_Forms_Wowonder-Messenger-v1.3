@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WowonderPhone;assembly=WowonderPhone"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:local1="clr-namespace:WowonderPhone.Controls;assembly=WowonderPhone"
+              xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.Register_pages.WelcomePage" Appearing="WelcomePage_OnAppearing" BackgroundImage="{ x:Static local:Settings.Background_Image_WelcomePage }">
+
+  <!-- MAIN CONTAINER-->
+    <ScrollView>
+        <Grid 
+		HorizontalOptions="FillAndExpand"
+		VerticalOptions="FillAndExpand">
+
+            <!---BACKGROUND IMAGE -->
+            <!--<Image
+			Source="{ x:Static local:Settings.Background_Image_WelcomePage }"/>-->
+
+            <Grid
+			Padding="20">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+
+                <Grid
+				Grid.Row="0"
+				ColumnSpacing="0"
+        Margin="0,10,0,0"
+				Padding="0"	HorizontalOptions="StartAndExpand"
+				Style="{ StaticResource BrandContainerStyle }">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <!--LOGO-->
+                    <Image
+				Grid.Column="0"
+					Margin="15,0,0,0"
+			 	Source="icon.png"
+         HeightRequest="61"
+					WidthRequest="61"
+				 VerticalOptions="FillAndExpand"
+				    HorizontalOptions="FillAndExpand"/>
+
+                    <!--<forms:AnimationView
+					Grid.Column="0"
+					Margin="-20"
+				    x:Name="AnimationView"
+				    Animation="data.json"
+				    AutoPlay="false"
+				    HeightRequest="160"
+					WidthRequest="160"
+         
+					VerticalOptions="FillAndExpand"
+				    HorizontalOptions="FillAndExpand"/>-->
+
+
+                    <StackLayout
+					Grid.Column="1"
+          TranslationX="9"
+					Orientation="Vertical"
+					HorizontalOptions="Center"
+					VerticalOptions="Center"
+					Spacing="0">
+                        <Label
+						TextColor="White"
+						FontSize="24"
+						Text="{ x:Static local:Settings.ApplicationName }"
+						FontAttributes="Bold"
+						VerticalTextAlignment="Start"/>
+                        <Label
+						TextColor="White"
+						FontSize="24"
+						Text="Messenger v1.3"
+						VerticalTextAlignment="Start"/>
+                    </StackLayout>
+
+                </Grid>
+
+
+
+
+
+
+                <!--CLAIM TEXT-->
+                <StackLayout
+				Grid.Row="1"
+				Spacing="10"
+				Orientation="Vertical"
+				VerticalOptions="Center"
+				TranslationY="-20"
+				Padding="15">
+                    <Label
+					LineBreakMode="WordWrap"
+					Text="{ languish:Translate Label_Welcome_page_Header}"
+					TextColor="White"
+					VerticalTextAlignment="Center"
+					FontAttributes="Bold"
+					AbsoluteLayout.LayoutFlags="All">
+                        <Label.FontSize>
+                            <OnIdiom x:TypeArguments="x:Double"
+                 Phone="26"
+                 Tablet="36"/>
+                        </Label.FontSize>
+                    </Label>
+                    <Label
+					LineBreakMode="WordWrap"
+					Text="{languish:Translate Label_Welcome_Page_Sub_Header}"
+					TextColor="White"
+					VerticalTextAlignment="Center"
+					
+					AbsoluteLayout.LayoutFlags="All">
+                        <Label.FontSize>
+                            <OnIdiom x:TypeArguments="x:Double"
+                 Phone="17"
+                 Tablet="27"/>
+                        </Label.FontSize>
+                    </Label>
+
+
+
+                    <!-- ICONS -->
+                    <StackLayout TranslationY="7"
+					Orientation="Horizontal"
+					Spacing="20">
+
+                        <Label
+						Grid.Row="0"
+						VerticalTextAlignment="Center"
+						Text="{ x:Static local1:IoniciconsFont.Flash } "
+						FontSize="25"
+						TextColor="White"
+						Style="{StaticResource IoniconsFontIcon}"/>
+
+                        <Label
+						Grid.Row="0"
+						VerticalTextAlignment="Center"
+						Text="{ x:Static local1:IoniciconsFont.Happy } "
+						FontSize="25"
+						TextColor="White"
+						Style="{StaticResource IoniconsFontIcon}"/>
+
+                        <Label
+						Grid.Row="0"
+						VerticalTextAlignment="Center"
+						Text="{ x:Static local1:IoniciconsFont.IosSearchStrong } "
+						FontSize="25"
+						TextColor="White"
+						Style="{StaticResource IoniconsFontIcon}"/>
+
+                        <Label
+						Grid.Row="0"
+						VerticalTextAlignment="Center"
+						Text="{ x:Static local1:IoniciconsFont.IosChatbubble } "
+						FontSize="25"
+						TextColor="White"
+						Style="{StaticResource IoniconsFontIcon}"/>
+
+                        <Label
+						Grid.Row="0"
+						VerticalTextAlignment="Center"
+						Text="{ x:Static local1:IoniciconsFont.IosCamera } "
+						FontSize="25"
+						TextColor="White"
+						Style="{StaticResource IoniconsFontIcon}"/>
+
+                    </StackLayout>
+
+                    <!-- ACCENT LINE -->
+                    <BoxView TranslationY="11"
+					Style="{DynamicResource BrandNameOrnamentStyle}"
+					BackgroundColor="{ DynamicResource AccentColor }"/>
+
+                </StackLayout>
+
+                <!--BUTTONS-->
+                <StackLayout
+				Grid.Row="2"
+				VerticalOptions="End"
+				HorizontalOptions="FillAndExpand"
+				Spacing="10">
+
+                    <Button
+        Clicked="RegisterButtonTapped"
+        Style="{DynamicResource TransparentButtonwhiteStyle}"
+        Text="{ languish:Translate Label_Register_New_Account  }"
+        BorderColor="#a84849"
+        VerticalOptions="EndAndExpand"/>
+
+                    <Button
+          Clicked="LoginButtonTapped"
+          Style="{DynamicResource WhiteButtonStyle}"
+          Text="{ languish:Translate Label_Login }"
+           BorderColor="White" 
+          VerticalOptions="EndAndExpand"/>
+
+                </StackLayout>
+
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

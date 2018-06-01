@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:local="clr-namespace:WowonderPhone;assembly=WowonderPhone"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+              xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.Register_pages.RegisterPage" BackgroundImage="{ x:Static local:Settings.Background_Image_RegisterPage }" Title="Register">
+
+  <!--MAIN CONTAINER-->
+  <Grid>
+    <!---BACKGROUND IMAGE-->
+    <Image Style="{StaticResource SignUpBackgroundImage}"/>
+
+    <ScrollView
+			Padding="{ DynamicResource MainWrapperPadding }">
+
+      <!-- MAIN CONTAINER -->
+      <Grid
+			ColumnSpacing="0"
+			RowSpacing="0"
+			HorizontalOptions="Fill"
+			VerticalOptions="FillAndExpand" >
+
+        <Grid.RowDefinitions>
+          <RowDefinition Height="22" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- LOGO -->
+        <!--<Grid
+          Grid.Row="0"
+          WidthRequest="60"
+          HeightRequest="60"
+          Margin="20"
+          VerticalOptions="End"
+          HorizontalOptions="Start">
+
+          <BoxView
+            BackgroundColor="#444"/>
+
+          <Image
+       Grid.Column="0"
+         Margin="0,0,0,0"
+       Source="icon.png"
+        HeightRequest="40"
+         WidthRequest="40"
+        VerticalOptions="Center"
+           HorizontalOptions="Center"/>-->
+          
+          <!--<Label
+            TextColor="{ DynamicResource OverImageTextColor }"
+            FontSize="42"
+            Text="{ x:Static local:GrialShapesFont.LogoGrial }"
+            Style="{StaticResource FontIcon}"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"/>-->
+          
+        <!--</Grid>-->
+
+
+        <!-- CLOSE ICON -->
+        <Label
+          Style="{DynamicResource IconCloseLabelStyle}"
+          HorizontalOptions="End"
+          VerticalOptions="Start"
+          TranslationX="-21"
+          TranslationY="35"
+          Grid.Row="0">
+          <Label.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnCloseButtonClicked" />
+          </Label.GestureRecognizers>
+        </Label>
+
+        <!--CLAIM TEXT-->
+        <StackLayout
+          Grid.Row="1"
+          Spacing="10"
+          Padding="20"
+          Orientation="Vertical"
+          VerticalOptions="Center">
+          <Label
+            LineBreakMode="WordWrap"
+            Text="Register now"
+            TextColor="White"
+            VerticalTextAlignment="Center"
+            FontAttributes="Bold"
+            AbsoluteLayout.LayoutFlags="All">
+            <Label.FontSize>
+              <OnIdiom x:TypeArguments="x:Double"
+									 Phone="26"
+									 Tablet="36"/>
+            </Label.FontSize>
+          </Label>
+          <Label
+						LineBreakMode="WordWrap"
+						Text="{languish:Translate Label_Register_Now_And}"
+						TextColor="White"
+						VerticalTextAlignment="Center"
+						AbsoluteLayout.LayoutFlags="All">
+            <Label.FontSize>
+              <OnIdiom x:TypeArguments="x:Double"
+                     Phone="17"
+                     Tablet="27"/>
+            </Label.FontSize>
+          </Label>
+
+          <BoxView
+            Style="{StaticResource BrandNameOrnamentStyle}"
+            BackgroundColor="White"/>
+
+        </StackLayout>
+
+        <!---FIELDS CONTAINER-->
+        <Grid
+          Padding="30,0" TranslationY="-4"
+          VerticalOptions="CenterAndExpand"
+          HeightRequest="260"
+          Grid.Row="2">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+          <StackLayout
+						Grid.Row="0"
+						VerticalOptions="Start">
+            <!---EMAIL FIELD-->
+            <Entry
+							Placeholder="{languish:Translate Label_Email}" x:Name="EmailEntry"
+							Style="{DynamicResource ArtinaLoginEntryStyle}">
+
+              <Entry.Behaviors>
+                <shared:EmailValidatorBehavior x:Name="emailValidator" />
+              </Entry.Behaviors>
+            </Entry>
+
+            <Label
+							Text="{languish:Translate Label_Please_Enter_Valid_Email}" IsVisible="false"
+							Style="{DynamicResource ValidationEntryErrorStyle}">
+
+              <Label.Triggers>
+                <DataTrigger TargetType="Label"
+									Binding="{Binding Source={x:Reference emailValidator}, Path=IsValid}"
+									Value="false">
+                  <Setter Property="IsVisible" Value="true" />
+                </DataTrigger>
+              </Label.Triggers>
+            </Label>
+          </StackLayout>
+
+          <!---USERNAME FIELD-->
+          <Entry
+						Grid.Row="1"
+						Placeholder="{languish:Translate Label_Username}"
+            x:Name="usernameEntry"
+						Style="{DynamicResource ArtinaLoginEntryStyle}"
+						VerticalOptions="StartAndExpand" />
+
+
+          <!---PASSWORD FIELD-->
+          <Entry x:Name="passwordEntry"
+						Grid.Row="2"
+						Placeholder="{languish:Translate Label_Password}"
+						IsPassword="true"
+						Style="{DynamicResource ArtinaLoginEntryStyle}"
+						VerticalOptions="StartAndExpand" />
+
+          <StackLayout
+						Grid.Row="3"
+						VerticalOptions="StartAndExpand" >
+
+            <!---PASSWORD REPEAT FIELD-->
+            <Entry
+							Placeholder="{languish:Translate Label_RepeatPassword}"
+							IsPassword="true"
+              x:Name="passwordConfirmEntry"
+							Style="{DynamicResource ArtinaLoginEntryStyle}"
+							>
+              <Entry.Behaviors>
+                <shared:TextMatchValidatorBehavior x:Name="passwordValidator"
+									TextToMatch="{Binding Source={x:Reference passwordEntry}, Path=Text}"/>
+              </Entry.Behaviors>
+            </Entry>
+
+            <Label
+							Text="{languish:Translate Label_Your_Password_Dont_Match}" IsVisible="false"
+							Style="{DynamicResource ValidationEntryErrorStyle}"
+							>
+
+              <Label.Triggers>
+                <DataTrigger
+									TargetType="Label"
+									Binding="{Binding Source={x:Reference passwordValidator}, Path=IsValid}"
+									Value="false">
+                  <Setter Property="IsVisible" Value="true" />
+                </DataTrigger>
+              </Label.Triggers>
+
+            </Label>
+          </StackLayout>
+        </Grid>
+
+        <!-- FOOTER -->
+        <StackLayout
+          x:Name="loginStack"
+          HorizontalOptions="Fill"
+          VerticalOptions="End"
+          Padding="20, 0"
+          Grid.Row="3" >
+
+          <controls:ExtendedButton
+            Style="{DynamicResource PrimaryActionButtonStyle}"
+            VerticalOptions="End"
+            Text="{languish:Translate Label_Sign_Up}"
+            Clicked="RegisterButton_OnClicked"
+            WidthRequest="200"
+            HorizontalOptions="Fill"/>
+
+          <controls:ExtendedButton
+            Style="{DynamicResource TransparentButtonStyle}"
+            VerticalOptions="End"
+            Text="{languish:Translate Label_Already_a_User_Login_now} "
+            WidthRequest="200"
+            Clicked="Button_OnClicked"
+            HorizontalOptions="Fill"/>
+
+        </StackLayout>
+
+      </Grid>
+
+    </ScrollView>
+  </Grid>
+  
+  
+  
+  
+  
+  
+  <!--<RelativeLayout>
+  <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+    <ScrollView Orientation="Vertical"  VerticalOptions="FillAndExpand">
+      <StackLayout >
+      <StackLayout VerticalOptions="StartAndExpand" Padding="30,0,30,2">
+      </StackLayout>
+      <StackLayout Padding="30,5,30,10"  TranslationY="-20" >
+
+        <StackLayout VerticalOptions="StartAndExpand" >
+          <controls:ExtendedEntry Text="" TranslationY="-7" PlaceholderTextColor="White" Keyboard="Email" Placeholder="Username"  FontSize="16" Entry.TextColor="Black" x:Name="usernameEntry" />
+          <controls:ExtendedEntry Text=""  Keyboard="Email" PlaceholderTextColor="White" Placeholder="Password" FontSize="14" Entry.TextColor="White" IsPassword="true"  x:Name="passwordEntry" />
+          <controls:ExtendedEntry Text="" TranslationY="3" Keyboard="Email" PlaceholderTextColor="White" Placeholder="Confirm Password" FontSize="14" Entry.TextColor="Black" IsPassword="true"  x:Name="passwordConfirmEntry" />
+          <controls:ExtendedEntry Text="" TranslationY="7" Keyboard="Email" PlaceholderTextColor="White" Placeholder="Email Address" FontSize="14" Entry.TextColor="Black"  x:Name="EmailEntry" />
+          <StackLayout Orientation="Horizontal" TranslationY="17">
+           --><!-- <Label Text="Gender:" FontSize="16" TextColor="White" TranslationY="10" Margin="5,0,0,0"/>--><!--
+            <controls:CheckBox x:Name="Male" CheckedText="Male" DefaultText="Male" CheckedChanged="Male_OnCheckedChanged"  TranslationY="6" TranslationX="10" TextColor="White"/>
+            <controls:CheckBox x:Name="Female" CheckedText="Female" DefaultText="Female" CheckedChanged="Female_OnCheckedChanged" TranslationY="6" TranslationX="15" TextColor="White" />
+								
+          </StackLayout>
+          <StackLayout VerticalOptions="StartAndExpand" HeightRequest="70" Padding="30,0,30,0" TranslationY="10">
+          <StackLayout x:Name="LoadingPanel" VerticalOptions="StartAndExpand" IsVisible="False"  TranslationY="20" >
+            <ActivityIndicator x:name="Loader" Color="#a84849" IsRunning="true" IsVisible="True"/>
+          </StackLayout>
+          </StackLayout>
+        </StackLayout>
+      </StackLayout>
+       
+        <StackLayout VerticalOptions="StartAndExpand" Padding="30,40,30,15" >
+          <controls:ImageButton x:Name="RegisterButton" Text="Register"  BackgroundColor="#a84849" BorderWidth="0"  HorizontalOptions="FillAndExpand"  TextColor="White" Clicked="RegisterButton_OnClicked"/>
+        
+        </StackLayout>
+    </StackLayout >
+     
+    </ScrollView>
+  </Grid>
+  </RelativeLayout>-->
+</ContentPage>

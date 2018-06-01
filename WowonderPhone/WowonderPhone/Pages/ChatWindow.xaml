@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:wowonderPhone="clr-namespace:WowonderPhone;assembly=WowonderPhone"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:sticker="clr-namespace:WowonderPhone.Controls;"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             x:Class="WowonderPhone.Pages.ChatWindow" x:Name="csss" Title="No session"  Disappearing="ChatWindow_OnDisappearing" Appearing="ChatWindow_OnAppearing" >
+
+  
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <wowonderPhone:MessageDataTemplate x:Key="MsgDataTemplate"></wowonderPhone:MessageDataTemplate>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+    
+ 
+<ContentPage.Content>
+<ScrollView>
+    <RelativeLayout x:Name="rrrrr" >
+
+        <ListView  x:Name="MessagesListView"
+              ItemTemplate="{StaticResource MsgDataTemplate}" 
+              HasUnevenRows="True" 
+              ItemSelected="MyListView_OnItemSelected"
+              ItemTapped="MyListView_OnItemTapped"
+              ItemAppearing="MessagesListView_OnItemAppearing"
+             Focused="MessagesListView_OnFocused"
+                 Refreshing="MessagesListView_OnRefreshing" 
+                 IsPullToRefreshEnabled ="true"
+              SeparatorVisibility="None"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.92,Constant=0}">
+
+        </ListView>
+
+
+        <Grid  x:Name="MessageControls" RowSpacing="1" ColumnSpacing="0" Padding="1"
+         BackgroundColor="#EFEFF4"
+         VerticalOptions="FillAndExpand"
+         HorizontalOptions="FillAndExpand"
+         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=MessagesListView, Property=Height,Factor=1,Constant=0}"
+         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=MessagesListView, Property=Height,Factor=.08,Constant=0}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition  Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Entry x:Name="Textbox"  Keyboard="Chat"  Grid.Column="0" Grid.Row="0" Focused="Textbox_OnFocused"  Style="{DynamicResource WowonderTextEntryStyle}" Margin="1,10,0,0" MinimumHeightRequest="25"  Placeholder="Write your message.." TextChanged="Textbox_OnTextChanged"></Entry>
+
+            <controls:ImageButton x:Name="eeButton" Grid.Column="1" Grid.Row="0" Margin="1,10,0,0" WidthRequest="39" HeightRequest="15" BackgroundColor="#EFEFF4" Clicked="EeButton_OnClicked" Image="Attach.png"  Orientation="ImageCentered"  ImageHeightRequest="30" ImageWidthRequest="30" />
+            <controls:ImageButton x:Name="SendButton" IsVisible="False" Grid.Column="2" Margin="0,10,0,0" Grid.Row="0"  WidthRequest="39" HeightRequest="15" BackgroundColor="#EFEFF4" Clicked="SendButton_OnClicked" Image="Paper.png"  Orientation="ImageCentered"  ImageHeightRequest="30" ImageWidthRequest="30" />
+            <controls:ImageButton x:Name="RecourdButton" IsVisible="false" Grid.Column="2" Grid.Row="0" Margin="0,10,0,0"  WidthRequest="39" HeightRequest="15" BackgroundColor="#EFEFF4" Clicked="RecourdButton_OnClicked" Image="recorder.png"  Orientation="ImageCentered"  ImageHeightRequest="30" ImageWidthRequest="30" />
+
+        </Grid>
+
+        <Grid IsVisible="False"  x:Name="Recourd" RowSpacing="0" ColumnSpacing="0" Padding="-1"
+           VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+           RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=MessagesListView,Property=Y,Factor=1,Constant=0}"
+           RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=MessagesListView,Property=X,Factor=1,Constant=0}"
+           RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Width,Factor=.99,Constant=0}"
+           RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToView , ElementName=MessagesListView ,Property=Height,Factor=1,Constant=0}"
+          >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Frame BackgroundColor="White" OutlineColor="White" VerticalOptions="EndAndExpand" HasShadow="False" Grid.Column="0" HeightRequest="65">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Image  x:Name="Recourdgif" Source="" HeightRequest="50" WidthRequest="50"></Image>
+                    <Label x:Name="RecourdSecoundsLabel" FontSize="14" Margin="1,26,0,0" Text=""></Label>
+                </StackLayout>
+
+
+            </Frame>
+        </Grid>
+        <Grid IsVisible="False"  x:Name="EmtyChat"  RowSpacing="0" ColumnSpacing="0" TranslationY="-20" Padding="-2"
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand"
+              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=MessagesListView,Property=Y,Factor=1,Constant=0}"
+              RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=MessagesListView,Property=X,Factor=1,Constant=0}"
+              RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Width,Factor=.99,Constant=0}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToView , ElementName=MessagesListView ,Property=Height,Factor=1,Constant=0}" >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Frame BackgroundColor="Transparent" OutlineColor="White" VerticalOptions="CenterAndExpand" HeightRequest="150" HasShadow="False" >
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Orientation="Horizontal" Padding="0,0,0,-11" Grid.Column="0" Grid.Row="0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                        <Grid VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="80*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40*"></RowDefinition>
+                                <RowDefinition Height="20*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label x:Name="EmptyLabel1" Style="{StaticResource IoniconsFontIcon}" HorizontalTextAlignment="Center" VerticalOptions="Center" Text="{x:Static sticker:IoniciconsFont.IosNavigate}" Grid.Row="0" Grid.Column="1"  FontSize="65"  />
+                            <Label x:Name="EmptyLabel2" FontSize="14" Grid.Row="1"   Grid.Column="1" HorizontalTextAlignment="Center" TextColor="Black" Text="{ languish:Translate Label_Once_You_start_new_Conversation }" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+        </Grid>
+        <Grid IsVisible="False"  x:Name="Options"  RowSpacing="0" ColumnSpacing="0" Padding="-2"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand"
+            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=MessagesListView,Property=Y,Factor=1,Constant=0}"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView,
+            ElementName=MessagesListView,Property=X,Factor=1,Constant=0}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression
+            Type=RelativeToParent,Property=Width,Factor=.99,Constant=0}"
+            RelativeLayout.HeightConstraint="{ConstraintExpression
+            Type=RelativeToView , ElementName=MessagesListView ,Property=Height,Factor=1,Constant=0}" >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Frame BackgroundColor="White" OutlineColor="White"  VerticalOptions="EndAndExpand" HeightRequest="80" HasShadow="False" >
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Orientation="Horizontal" Padding="0,0,0,-11" Grid.Column="0" Grid.Row="0"  HorizontalOptions="FillAndExpand" HeightRequest="45" VerticalOptions="FillAndExpand" >
+                        <Grid VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"></ColumnDefinition>
+                                <ColumnDefinition Width="10*"></ColumnDefinition>
+                                <ColumnDefinition Width="41*"></ColumnDefinition>
+                                <ColumnDefinition Width="10*"></ColumnDefinition>
+                                <ColumnDefinition Width="42*"></ColumnDefinition>
+                                <ColumnDefinition Width="10*"></ColumnDefinition>
+                                <ColumnDefinition Width="43*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="45*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <controls:ImageButton x:Name="TakePhotoButton"  Grid.Column="0" Grid.Row="0"  WidthRequest="50" HeightRequest="30" BackgroundColor="White" Clicked="TakePicture_OnClicked" Image="AddPhoto.png"  Orientation="ImageCentered"  ImageHeightRequest="30" ImageWidthRequest="30" />
+                            <controls:ImageButton x:Name="TakeVideoButton" Grid.Column="2" Grid.Row="0"  WidthRequest="50" HeightRequest="30" BackgroundColor="White" Clicked="TakeVideoButton_OnClicked" Image="AddVideo.png"  Orientation="ImageCentered"  ImageHeightRequest="30" ImageWidthRequest="30" />
+                            <controls:ImageButton x:Name="TakeContactButton" Grid.Column="4" Grid.Row="0"  WidthRequest="50" HeightRequest="30" BackgroundColor="White" Clicked="TakeContactButton_OnClicked" Image="AddContact.png"  Orientation="ImageCentered"  ImageHeightRequest="30" ImageWidthRequest="30" />
+                            <controls:ImageButton x:Name="TakeGiftButton" Grid.Column="6" Grid.Row="0"  WidthRequest="50" HeightRequest="30" BackgroundColor="White" Clicked="TakeGiftButton_OnClicked" Image="AddGift.png"  Orientation="ImageCentered"  ImageHeightRequest="30" ImageWidthRequest="30" />
+
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1" TranslationY="10" HorizontalOptions="FillAndExpand" HeightRequest="8" VerticalOptions="FillAndExpand" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"></ColumnDefinition>
+                                <ColumnDefinition Width="9*"></ColumnDefinition>
+                                <ColumnDefinition Width="30*"></ColumnDefinition>
+                                <ColumnDefinition Width="9*"></ColumnDefinition>
+                                <ColumnDefinition Width="30*"></ColumnDefinition>
+                                <ColumnDefinition Width="9*"></ColumnDefinition>
+                                <ColumnDefinition Width="30*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="Photolabel"  FontSize="14" Grid.Row="0"  Grid.Column="0" HorizontalTextAlignment="Center" TextColor="Black" Text="{ languish:Translate Label_Photo }" />
+                            <Label x:Name="Videolabel" FontSize="14" Grid.Row="0"  Grid.Column="2" HorizontalTextAlignment="Center" TextColor="Black" Text="{ languish:Translate Label_Video }" />
+                            <Label x:Name="Contactlabel"  FontSize="14" Grid.Row="0"  Grid.Column="4"  HorizontalTextAlignment="Center" TextColor="Black" Text="{ languish:Translate Label_Contact }" />
+                            <Label x:Name="Stickerlabel"  FontSize="14" Grid.Row="0"  Grid.Column="6"  HorizontalTextAlignment="Start" TextColor="Black" Text="{ languish:Translate Label_Stickers }" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+        </Grid>
+        <Grid IsVisible="False"  x:Name="Gifts"  RowSpacing="0" TranslationY="2"  ColumnSpacing="0" Padding="-1"
+              VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+              ElementName=MessagesListView,Property=Y,Factor=1,Constant=0}" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToView, ElementName=MessagesListView,Property=X,Factor=1,Constant=0}"
+              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=.99,Constant=0}" RelativeLayout.HeightConstraint="{ConstraintExpression
+              Type=RelativeToView , ElementName=MessagesListView ,Property=Height,Factor=1,Constant=0}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Frame BackgroundColor="White" OutlineColor="White" VerticalOptions="EndAndExpand" HeightRequest="190" HasShadow="False">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Horizontal" Padding="-15" Grid.Column="0" Grid.Row="0"  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" >
+                        <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <Grid VerticalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*"></ColumnDefinition>
+                                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                                    <ColumnDefinition Width="50*"></ColumnDefinition>
+                                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                                    <ColumnDefinition Width="50*"></ColumnDefinition>
+                                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                                    <ColumnDefinition Width="50*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50*"></RowDefinition>
+                                    <RowDefinition Height="50*"></RowDefinition>
+                                    <RowDefinition Height="50*"></RowDefinition>
+                                    <RowDefinition Height="50*"></RowDefinition>
+                                    <RowDefinition Height="50*"></RowDefinition>
+                                    <RowDefinition Height="50*"></RowDefinition>
+                                    <RowDefinition Height="50*"></RowDefinition>
+                                    <RowDefinition Height="50*"></RowDefinition>
+                                    <RowDefinition Height="50*"></RowDefinition>
+                                    <RowDefinition Height="50*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <ffimageloading:CachedImage x:Name="Sticker1" Grid.Column="0"  Grid.Row="0" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker1}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker2" Grid.Column="2" Grid.Row="0" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker2}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker3" Grid.Column="4" Grid.Row="0" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker3}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker4"  Grid.Column="6" Grid.Row="0" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker4}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker5" Grid.Column="0" Grid.Row="1" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker5}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker6"  Grid.Column="2" Grid.Row="1" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker6}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker7" Grid.Column="4" Grid.Row="1" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker7}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker8" Grid.Column="6" Grid.Row="1" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker8}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker9" Grid.Column="0" Grid.Row="2" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker9}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker10" Grid.Column="2" Grid.Row="2" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker10}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker11" Grid.Column="4" Grid.Row="2" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker11}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker12" Grid.Column="6" Grid.Row="2" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker12}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker13" Grid.Column="0" Grid.Row="3" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker13}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker14" Grid.Column="2" Grid.Row="3" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker14}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker15" Grid.Column="4" Grid.Row="3" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker15}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker16" Grid.Column="6" Grid.Row="3" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker16}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker17" Grid.Column="0" Grid.Row="4" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker17}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker18" Grid.Column="2" Grid.Row="4" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker18}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker19" Grid.Column="4" Grid.Row="4" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker19}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker20" Grid.Column="6" Grid.Row="4" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker20}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker21" Grid.Column="0" Grid.Row="5" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker21}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker22" Grid.Column="2" Grid.Row="5" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker22}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker23" Grid.Column="4" Grid.Row="5" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker23}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker24" Grid.Column="6" Grid.Row="5" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker24}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker25" Grid.Column="0" Grid.Row="6" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker25}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker26" Grid.Column="2" Grid.Row="6" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker26}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker27" Grid.Column="4" Grid.Row="6" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker27}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker28" Grid.Column="6" Grid.Row="6" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker28}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker29" Grid.Column="0" Grid.Row="7" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker29}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker30" Grid.Column="2" Grid.Row="7" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker30}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker31" Grid.Column="4" Grid.Row="7" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker31}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker32" Grid.Column="6" Grid.Row="7" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker32}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker33" Grid.Column="0" Grid.Row="8" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker33}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker34" Grid.Column="2" Grid.Row="8" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker34}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker35" Grid.Column="4" Grid.Row="8" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker35}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker36" Grid.Column="6" Grid.Row="8" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker36}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker37" Grid.Column="0" Grid.Row="9" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker37}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker38" Grid.Column="2" Grid.Row="9" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker38}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker39" Grid.Column="4" Grid.Row="9" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker39}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                                <ffimageloading:CachedImage x:Name="Sticker40" Grid.Column="6" Grid.Row="9" Aspect="Fill"  HorizontalOptions="Start" HeightRequest="55" WidthRequest="55"  Source="{ x:Static sticker:Stickers.Sticker40}" FadeAnimationEnabled="True"  DownsampleToViewSize="true" >
+                                </ffimageloading:CachedImage>
+                            </Grid>
+                        </ScrollView>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </Grid>
+         
+       
+    </RelativeLayout>
+       </ScrollView>
+        
+          </ContentPage.Content>
+
+           <ContentPage.ToolbarItems>
+  <ToolbarItem Name="Settings" Icon="info20.png"  Clicked="MenuItem_OnClicked" >                 
+    <ToolbarItem.Order>                     
+      <OnPlatform x:TypeArguments="ToolbarItemOrder"  iOS="Primary"   Android="Primary" />                
+    </ToolbarItem.Order> 
+                
+  </ToolbarItem> 
+        
+  <ToolbarItem Name="BlockUser" Icon="block20.png" Clicked="BlockUser_Clicked" >                 
+    <ToolbarItem.Order>                     
+      <OnPlatform x:TypeArguments="ToolbarItemOrder"  iOS="Primary"   Android="Secondary"/>                
+    </ToolbarItem.Order>             
+  </ToolbarItem>  
+
+</ContentPage.ToolbarItems>
+</ContentPage>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

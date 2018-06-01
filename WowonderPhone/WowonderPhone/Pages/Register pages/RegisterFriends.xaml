@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:shared="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+             xmlns:local="clr-namespace:WowonderPhone;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.Register_pages.RegisterFriends" BackgroundColor="#444">
+
+
+  <Grid x:Name="ShowDataGrid" IsVisible="True" BackgroundColor="#444">
+    <StackLayout Padding="0,45,0,0">
+      <ScrollView>
+        <Grid Padding="10" ColumnSpacing="10"  BackgroundColor="#444" >
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="5*" />
+          </Grid.ColumnDefinitions>
+          <!---Left Column Content -->
+          <StackLayout
+            x:Name="LeftColumn"
+            Grid.Column="0">
+          </StackLayout>
+
+          <StackLayout
+          x:Name="CenterColumn"
+          Grid.Column="1">
+          </StackLayout>
+
+          <!-- Right Column Content-->
+          <StackLayout
+            x:Name="RightColumn"
+            Grid.Column="2">
+          </StackLayout>
+
+        </Grid>
+      </ScrollView>
+      <ActivityIndicator x:Name="Loaderspinner" Color="#a84849" VerticalOptions="Center" TranslationY="30" IsRunning="true" IsVisible="True"/>
+    </StackLayout>
+    <StackLayout x:Name="ButtonStack" IsVisible="True" VerticalOptions="End" Padding="26,-6,26,4" >
+      <controls:ExtendedButton
+        x:Name="AddButton"
+        Clicked="OnAddClicked"
+        TranslationY="-10"
+        Style="{DynamicResource SecondaryActionButtonStyle}"
+        Text=""
+        VerticalOptions="Start"/>
+    </StackLayout>
+  </Grid>
+
+</ContentPage>

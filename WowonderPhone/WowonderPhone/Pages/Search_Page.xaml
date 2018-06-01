@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:local="clr-namespace:WowonderPhone;assembly=WowonderPhone"
+             xmlns:languish="clr-namespace:WowonderPhone.Languish;assembly=WowonderPhone"
+             x:Class="WowonderPhone.Pages.Search_Page" Title="{ languish:Translate Label_Search }" Disappearing="AddFriends_OnDisappearing" >
+  
+  <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Filter" Icon="Fillter.png" Order="Primary" Clicked="Fillter_OnClicked" />
+        <ToolbarItem x:Name="Recommended" Text="{languish:Translate Label_Recommended_Users }" Order="Secondary" Clicked="Recommended_OnClicked_OnClicked" />
+        <ToolbarItem x:Name="Sync" Text="{languish:Translate Label_Sync_Phone_Contacts }" Order="Secondary" Clicked="Sync_OnClicked_OnClicked" />
+    </ContentPage.ToolbarItems>
+
+    <Grid  BackgroundColor="#F5F5F5" IsVisible="True" VerticalOptions="FillAndExpand" Margin="0,0,0,0" >
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition  Height="55"></RowDefinition>
+        <RowDefinition  Height="*"></RowDefinition>
+      </Grid.RowDefinitions>
+      <Frame Grid.Row="0" Grid.Column="0" OutlineColor="White" Padding="5" BackgroundColor="White" HasShadow="False" >
+            <SearchBar x:Name="SearchBarCo"  TextChanged="SearchBarCo_OnTextChanged" Margin="-7,10,0,0" SearchButtonPressed="SearchBar_OnSearchButtonPressed" Placeholder="{ languish:Translate Label_Search }" ></SearchBar>
+      </Frame>
+      <StackLayout VerticalOptions="FillAndExpand" Margin="0,-6,0,0" BackgroundColor="White" IsVisible="True" Orientation="Vertical" x:Name="EmptySearchPage" Grid.Row="1" Grid.Column="0" >
+        <Grid  BackgroundColor="White" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="40*"/>
+                    </Grid.RowDefinitions>
+                    <!--ICON BACKGROUND-->
+            <Label
+              Grid.Row="0"
+              Text="&#xf111;"
+              Style="{StaticResource DefaultFontColor}"
+             
+              VerticalOptions="Center"
+              HorizontalOptions="Center"
+              FontSize="250"
+              Opacity="0.1"/>
+
+            <!--ICON BACKGROUND-->
+            <Label
+              Grid.Row="0"
+              Text="&#xf111;"
+              Style="{StaticResource DefaultFontColor}"
+            
+              VerticalOptions="Center"
+        
+              HorizontalOptions="Center"
+              FontSize="180"
+              Opacity="0.1"/>
+
+            <!--ICON-->
+            <Label
+              Grid.Row="0"
+              Text="&#xf002;"
+              Style="{StaticResource DefaultFontColor}"
+              FontSize="90"
+              HorizontalTextAlignment="Center"
+             
+              VerticalOptions="Center"
+              HorizontalOptions="Center"/>
+
+            <!--TEXT -->
+            <StackLayout
+                Grid.Row="1"
+                VerticalOptions="Center"
+                Padding="50,0"
+                Spacing="2">
+              <Label
+                TranslationY="-3"
+                HorizontalTextAlignment="Center"
+                Text="{ languish:Translate Label_Empty_Search }"
+                FontSize="24"
+                FontAttributes="Bold"
+                TextColor="#444"/>
+              <Label
+                TranslationY="3"
+                HorizontalTextAlignment="Center"
+                Opacity="0.8"
+                Text="{languish:Translate Label_Start_Seaching }"
+                FontSize="18"
+                TextColor="#444"/>
+            </StackLayout>
+
+          </Grid>
+
+          <!--BUTTON-->
+          <StackLayout Padding="23,0,23,3" Grid.Row="1">
+            <Button
+              x:Name="SearchButton"
+              Style="{DynamicResource PrimaryActionButtonStyle}"
+              VerticalOptions="End"
+              Text="{ languish:Translate Label_Search_Random }"
+              Margin="2"
+          Clicked="SearchButton_OnClicked"
+            
+       />
+          </StackLayout>
+        </Grid>
+      </StackLayout>
+      <ListView  Margin="0,-6,0,0" SeparatorVisibility="None" Grid.Row="1" Grid.Column="0"  VerticalOptions="FillAndExpand"  ItemSelected="ChatFriendsListview_OnItemSelected" Refreshing="ChatFriendsListview_OnRefreshing" IsPullToRefreshEnabled ="true" ItemAppearing="ChatFriendsListview_OnItemAppearing" ItemTapped="ChatFriendsListview_OnItemTapped"  IsGroupingEnabled="False"  x:Name="ChatFriendsListview"  BackgroundColor="White" HasUnevenRows='True' IsVisible="False" >
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout Orientation="Vertical" Padding="2,5,2,5">
+                <StackLayout Orientation="Horizontal">
+                  <AbsoluteLayout >
+                    <ffimageloading:CachedImage HorizontalOptions="Start"  FadeAnimationEnabled="True" LoadingPlaceholder="ImagePlacholder.jpg" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" DownsampleToViewSize="true" Source="{Binding profile_picture}">
+                      <ffimageloading:CachedImage.Transformations>
+                        <fftransformations:CircleTransformation />
+                      </ffimageloading:CachedImage.Transformations>
+                    </ffimageloading:CachedImage>
+                    <!--<abstractions:CircleImage Source="{Binding profile_picture}" HorizontalOptions="Start" Aspect="Fill" HeightRequest="50" WidthRequest="50" BorderThickness="1" BorderColor="White"></abstractions:CircleImage>-->
+                    <Grid >
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="14" />
+                        <RowDefinition Height="14" />
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="28" />
+                        <ColumnDefinition Width="14" />
+                      </Grid.ColumnDefinitions>
+                      <Image  Source="{Binding lastseen}" Grid.Row="0" Grid.Column="1" HeightRequest="5" WidthRequest="5" Aspect="Fill"/>
+                    </Grid>
+                  </AbsoluteLayout>
+                  <StackLayout HorizontalOptions="FillAndExpand">
+                    <Label FontSize="14" TextColor="#444" FontAttributes="Bold" Text="{Binding BigLabel}" />
+                    <Label FontSize="12" TextColor="#888" Text="{Binding MiniLabel}" />
+                  </StackLayout>
+                  <StackLayout Orientation="Horizontal" Margin="0,6,0,0" HorizontalOptions="EndAndExpand">
+                    <controls:ImageButton x:Name="ActionButton" Clicked="ActionButton_OnClicked" CommandParameter="{Binding ResultID}" BorderWidth="0" IsVisible="{Binding AvailbleAddorfollow}"  BackgroundColor="{Binding ButtonColor}" TextColor="{Binding ButtonTextColor}" FontSize="9" Image="{Binding ButtonImage}"  Orientation="ImageToLeft" HorizontalOptions="StartAndExpand" HeightRequest="32" VerticalOptions="Start" Text="{Binding connectivitySystem}" />
+                  </StackLayout>
+                </StackLayout>
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    
+    </Grid>
+  
+  </ContentPage>
